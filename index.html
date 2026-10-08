@@ -63,14 +63,13 @@ nav .btn:hover{color:var(--wd)}
 .about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
 .about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
 #events{background:var(--wd2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-/* Φράγμα Θέρμης με ελαφρύ blur */
-.dam{position:relative;isolation:isolate;overflow:hidden;background:var(--wd2);border-top:1px solid var(--line)}
-.dam::before{content:"";position:absolute;inset:-8%;z-index:-2;background:url('hero5.jpg') center/cover no-repeat;filter:blur(1.5px) saturate(1.05) brightness(.85);transform:scale(1.06);animation:damPan 30s var(--ease) infinite alternate;will-change:transform}
+/* Φράγμα Θέρμης — ελαφρύ, χωρίς animation για smooth scroll */
+.dam{position:relative;isolation:isolate;overflow:hidden;background:var(--wd2);border-top:1px solid var(--line);contain:paint}
+.dam::before{content:"";position:absolute;inset:0;z-index:-2;background:url('hero5.jpg') center/cover no-repeat;transform:scale(1.02)}
 .dam::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,29,21,.55) 0%,rgba(43,29,21,.35) 50%,rgba(43,29,21,.7) 100%)}
-.dam-inner{max-width:52rem}
+.dam-inner{max-width:52rem;position:relative;z-index:1}
 .dam h2{font-size:clamp(2.4rem,5.2vw,4.2rem);font-weight:300;margin-bottom:clamp(1.5rem,4vw,2.2rem)}
 .dam p{color:#e8dcc7;margin-bottom:1.3rem;max-width:44rem}
-@keyframes damPan{from{transform:scale(1.06) translate(-1.5%,-1%)}to{transform:scale(1.14) translate(1.5%,1%)}}
 #menu{background:var(--st) repeating-linear-gradient(90deg,rgba(43,29,21,.035) 0 1px,transparent 1px 9px);color:var(--si)}
 .mh{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem 3rem;flex-wrap:wrap;margin-bottom:clamp(2rem,5vw,3.5rem)}
 .mh h2{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;letter-spacing:-.02em}
@@ -120,7 +119,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 .gal figure:first-child{aspect-ratio:16/9}
 }
 @media(prefers-reduced-motion:reduce){
-.hero h1,.hero-row,.hero::before,.tw .ch,.dam::before{animation:none}
+.hero h1,.hero-row,.hero::before,.tw .ch{animation:none}
 .tw .ch{opacity:1;filter:none;transform:none}
 *{transition-duration:.01ms!important}
 }
