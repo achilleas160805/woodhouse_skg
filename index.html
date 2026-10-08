@@ -41,7 +41,9 @@ nav .btn:hover{color:var(--wd)}
 .burger span:first-child{top:18px}.burger span:last-child{top:25px}
 .open .burger span:first-child{top:21px;transform:rotate(45deg)}
 .open .burger span:last-child{top:21px;transform:rotate(-45deg)}
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:var(--top);background:linear-gradient(180deg,rgba(43,29,21,.55) 0%,rgba(43,29,21,.45) 40%,#2b1d15 100%),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:var(--top);background:var(--wd)}
+.hero::before{content:"";position:absolute;inset:-6% -4%;z-index:-2;background:url('hero.jpg') center/cover no-repeat;transform:translate3d(0,var(--p,0px),0) scale(1.06);animation:kenburns 28s var(--ease) infinite alternate;will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,29,21,.55) 0%,rgba(43,29,21,.45) 40%,#2b1d15 100%)}
 .hero h1{font-weight:300;font-size:clamp(3.6rem,18vw,15rem);letter-spacing:-.035em;line-height:.95;margin-left:-.04em;animation:rise 1.2s var(--ease) both}
 .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:clamp(1.2rem,3vw,2rem);animation:rise 1.2s .2s var(--ease) both}
 .hero p{max-width:30rem;color:#d6c8b2;font-size:1.05rem}
@@ -51,6 +53,7 @@ nav .btn:hover{color:var(--wd)}
 .facts div+div{padding-left:1.5rem;border-left:1px solid var(--line)}
 .facts b{display:block;font:400 1.3rem/1.3 var(--serif);color:var(--ink)}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@keyframes kenburns{from{transform:translate3d(0,var(--p,0px),0) scale(1.06) translate(-1.5%,-1%)}to{transform:translate3d(0,var(--p,0px),0) scale(1.18) translate(1.5%,1%)}}
 .about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(2rem,7vw,6rem);align-items:start}
 .about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
 .about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
@@ -113,7 +116,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 .facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
 .hero-row{flex-direction:column;align-items:flex-start}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero-row{animation:none}*{transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero-row,.hero::before{animation:none}*{transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
@@ -145,7 +148,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <div class="facts">
 <div><b>Self-service</b>Άμεση εξυπηρέτηση</div>
 <div><b>Φρέσκο στη στιγμή</b>Φτιάχνεται όταν παραγγέλνετε</div>
-<div><b>Καθημερινά</b>Ανοιχτά έως 12:00 α.μ.</div>
+<div><b>Καθημερινά</b>Ανοιχτά έως 12:00 π.μ.</div>
 </div>
 </div>
 </section>
@@ -195,7 +198,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <h2>Επισκεφθείτε μας</h2>
 <dl class="dl">
 <div><dt>Διεύθυνση</dt><dd>Αρχή Υψηλάντου, Θέρμη 570 01<br>Πλησίον Φράγματος</dd></div>
-<div><dt>Ώρες λειτουργίας</dt><dd>Καθημερινά, ανοιχτά έως 12:00 α.μ.</dd></div>
+<div><dt>Ώρες λειτουργίας</dt><dd>Καθημερινά, ανοιχτά έως 12:00 π.μ.</dd></div>
 <div><dt>Τηλέφωνο</dt><dd><a href="tel:2310463612">231 046 3612</a></dd></div>
 </dl>
 </div>
@@ -246,6 +249,11 @@ addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{pas
 const tog=o=>{H.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
 bg.addEventListener('click',()=>tog(!H.classList.contains('open')));
 document.querySelectorAll('#nv a').forEach(a=>a.addEventListener('click',()=>tog(false)));
+
+/* Parallax στο hero (ίδιο rAF pattern με το header) */
+const hero=document.querySelector('.hero');let pk=false;
+const pOn=()=>{if(hero){const y=Math.min(scrollY,innerHeight);hero.style.setProperty('--p',(y*0.25).toFixed(1)+'px')}pk=false};
+addEventListener('scroll',()=>{if(!pk){pk=true;requestAnimationFrame(pOn)}},{passive:true});pOn();
 
 const links=[...rail.children];
 const spy=new IntersectionObserver(es=>es.forEach(e=>{
