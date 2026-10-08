@@ -63,8 +63,10 @@ nav .btn:hover{color:var(--wd)}
 .mh p{max-width:22rem;color:var(--sm);font-size:.92rem;margin-bottom:.9rem}
 .nt{font-size:.92rem;color:var(--sm)}
 .nt a{color:var(--si);border-bottom:1px solid var(--si)}
-.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.8rem,2vw,1.4rem);margin-top:clamp(2rem,5vw,3rem)}
-.gal figure{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:4/3;background:#3a291d}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,1.4rem);margin-top:clamp(2rem,5vw,3rem)}
+.gal figure{position:relative;overflow:hidden;border-radius:14px;background:#3a291d}
+.gal figure:first-child{grid-column:1 / -1;aspect-ratio:21/9}
+.gal figure:not(:first-child){aspect-ratio:1/1}
 .gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
 .gal figure:hover img{transform:scale(1.06)}
 .rev h2,#info h2{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:300;margin-bottom:clamp(2rem,5vw,3.5rem)}
@@ -101,6 +103,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 .facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
 .hero-row{flex-direction:column;align-items:flex-start}
 .gal{grid-template-columns:1fr}
+.gal figure:first-child{aspect-ratio:16/9}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero-row,.hero::before{animation:none}*{transition-duration:.01ms!important}}
 </style>
@@ -162,7 +165,6 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <figure><img src="hero1.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
 <figure><img src="hero2.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
 <figure><img src="hero3.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
-<figure><img src="hero4.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
 </div>
 </div>
 </section>
