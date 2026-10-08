@@ -63,6 +63,11 @@ nav .btn:hover{color:var(--wd)}
 .about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
 .about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
 #events{background:var(--wd2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#dam{background:var(--wd2);border-top:1px solid var(--line)}
+.about.dam{align-items:center}
+.about.dam figure{overflow:hidden;border-radius:14px;aspect-ratio:4/3;background:#3a291d;margin:0}
+.about.dam figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.about.dam figure:hover img{transform:scale(1.05)}
 #menu{background:var(--st) repeating-linear-gradient(90deg,rgba(43,29,21,.035) 0 1px,transparent 1px 9px);color:var(--si)}
 .mh{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem 3rem;flex-wrap:wrap;margin-bottom:clamp(2rem,5vw,3.5rem)}
 .mh h2{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;letter-spacing:-.02em}
@@ -96,6 +101,7 @@ footer ul a:hover{color:var(--ink)}
 footer small{display:block;margin-top:2.5rem;color:var(--mute);font-size:.8rem}
 @media(max-width:900px){
 .about,.ig{grid-template-columns:1fr}
+.about.dam figure{order:-1}
 }
 @media(max-width:860px){
 .burger{display:block}
@@ -128,6 +134,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <li><a href="#events">Events</a></li>
 <li><a href="#menu">Μενού</a></li>
 <li><a href="#reviews">Αξιολογήσεις</a></li>
+<li><a href="#dam">Το Φράγμα</a></li>
 <li><a href="#info">Πληροφορίες</a></li>
 <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener" class="btn">Παραγγελία στο efood</a></li>
 </ul></nav>
@@ -204,6 +211,18 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 </div>
 </section>
 
+<section class="sec" id="dam">
+<div class="wrap about dam">
+<h2>Το Φράγμα</h2>
+<div>
+<p>Δίπλα μας απλώνεται το Φράγμα Θέρμης — ένα από τα πιο όμορφα φυσικά σημεία της Θεσσαλονίκης. Το νερό, το πράσινο και ο καθαρός αέρας συνθέτουν ένα τοπίο που αλλάζει χρώματα ανάλογα με την εποχή και την ώρα της ημέρας.</p>
+<p>Ο χώρος γύρω από το φράγμα είναι ιδανικός για περπάτημα, χαλάρωση και βόλτα με την οικογένεια ή τα παιδιά. Υπάρχουν <strong>γήπεδα</strong> για όσους θέλουν να παίξουν μπάλα ή να αθληθούν, καθώς και <strong>παιδικές χαρές</strong> για τους μικρούς μας φίλους.</p>
+<p>Συνδυάστε τη βόλτα σας στο φράγμα με κρέπες, sandwich και καφέ στο Woodhouse — δυο βήματα από το νερό.</p>
+</div>
+<figure><img src="hero5.jpg" alt="Το Φράγμα Θέρμης" loading="lazy" decoding="async"></figure>
+</div>
+</section>
+
 <section class="sec" id="info">
 <div class="wrap ig">
 <div>
@@ -225,6 +244,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <li><a href="#about">Σχετικά</a></li>
 <li><a href="#events">Events</a></li>
 <li><a href="#menu">Μενού</a></li>
+<li><a href="#dam">Το Φράγμα</a></li>
 <li><a href="#info">Επικοινωνία</a></li>
 <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener">efood</a></li>
 </ul>
