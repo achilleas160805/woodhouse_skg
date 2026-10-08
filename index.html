@@ -54,6 +54,10 @@ nav .btn:hover{color:var(--wd)}
 .facts b{display:block;font:400 1.3rem/1.3 var(--serif);color:var(--ink)}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}}
 @keyframes kenburns{from{transform:translate3d(0,var(--p,0px),0) scale(1.06) translate(-1.5%,-1%)}to{transform:translate3d(0,var(--p,0px),0) scale(1.18) translate(1.5%,1%)}}
+.intro{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(4rem,18vh,12rem);background:var(--wd);pointer-events:none;animation:introOut 1s var(--ease) 1.4s both}
+.intro-logo{font:300 clamp(2.4rem,7vw,5rem)/1 var(--serif);letter-spacing:-.02em;color:var(--ink);opacity:0;transform:translateY(14px) scale(.98);filter:blur(6px);animation:introIn 1.1s var(--ease) .15s both}
+@keyframes introIn{to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
 .about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(2rem,7vw,6rem);align-items:start}
 .about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
 .about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
@@ -105,10 +109,13 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 .gal{grid-template-columns:1fr}
 .gal figure:first-child{aspect-ratio:16/9}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero-row,.hero::before{animation:none}*{transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero-row,.hero::before,.intro,.intro-logo{animation:none}.intro{display:none}*{transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+<span class="intro-logo">Woodhouse</span>
+</div>
 <header id="hd">
 <div class="wrap bar">
 <a href="#" class="logo">Woodhouse</a>
@@ -221,6 +228,10 @@ document.querySelectorAll('#nv a').forEach(a=>a.addEventListener('click',()=>tog
 const hero=document.querySelector('.hero');let pk=false;
 const pOn=()=>{if(hero){const y=Math.min(scrollY,innerHeight);hero.style.setProperty('--p',(y*0.25).toFixed(1)+'px')}pk=false};
 addEventListener('scroll',()=>{if(!pk){pk=true;requestAnimationFrame(pOn)}},{passive:true});pOn();
+
+/* Intro overlay: αφαιρείται μόλις τελειώσει το animation εξόδου */
+const intro=document.getElementById('intro');
+if(intro)intro.addEventListener('animationend',e=>{if(e.animationName==='introOut')intro.remove()},{once:true});
 </script>
 </body>
 </html>
