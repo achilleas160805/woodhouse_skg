@@ -3,50 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woodhouse SKG | Premium Gastronomy & Coffee</title>
-    <!-- Google Fonts -->
+    <title>Woodhouse SKG | Θέρμη, Θεσσαλονίκη</title>
+    
+    <!-- Premium Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0d0e10;
-            --surface-color: #16181c;
-            --surface-hover: #1f2228;
-            --accent-gold: #c9a063;
-            --accent-gold-light: #e0be8a;
-            --accent-wood: #8b5a2b;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: rgba(201, 160, 99, 0.18);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --container-width: 1200px;
+            --bg: #0f1012;
+            --card-bg: #15171a;
+            --accent: #c5a059;
+            --accent-soft: rgba(197, 160, 89, 0.12);
+            --text-main: #f1f1f1;
+            --text-muted: #8e939d;
+            --border: rgba(255, 255, 255, 0.07);
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Hardware Accelerated Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--bg);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg);
             color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
+            transform: translateZ(0); /* Enable GPU */
         }
 
-        h1, h2, h3, h4, .serif-font {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, h4, .font-serif {
+            font-family: var(--font-title);
+            font-weight: 500;
+            letter-spacing: -0.01em;
         }
 
         a {
@@ -54,43 +61,40 @@
             text-decoration: none;
         }
 
-        /* Ambient Glow Background Element */
-        .ambient-glow {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at 50% -20%, rgba(201, 160, 99, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #25282e;
+            border-radius: 3px;
         }
 
-        /* --- Header & Nav --- */
+        /* --- Header / Nav --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            transition: var(--transition);
-            padding: 1.5rem 0;
-            background: rgba(13, 14, 16, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 1.8rem 0;
+            transition: padding 0.4s var(--ease-out), background-color 0.4s var(--ease-out);
+            border-bottom: 1px solid transparent;
         }
 
         header.scrolled {
             padding: 1rem 0;
-            background: rgba(13, 14, 16, 0.92);
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(15, 16, 18, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
-            max-width: var(--container-width);
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -99,19 +103,16 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-title);
             font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--text-main);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            position: relative;
+            color: var(--text-main);
         }
 
         .logo span {
-            color: var(--accent-gold);
+            color: var(--accent);
             font-style: italic;
-            font-size: 1.4rem;
         }
 
         .nav-links {
@@ -122,562 +123,360 @@
         }
 
         .nav-links a {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-muted);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent-gold);
-            transition: var(--transition);
+            transition: color 0.3s var(--ease-out);
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold-light);
+            color: var(--text-main);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn-gold {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #a87f43 100%);
-            color: #0d0e10;
-            font-weight: 600;
-            font-size: 0.85rem;
+        /* Minimal Luxury Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.8rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
-            border-radius: 2px;
-            transition: var(--transition);
-            border: none;
+            border-radius: 1px;
+            transition: all 0.3s var(--ease-out);
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(201, 160, 99, 0.2);
+            will-change: transform;
         }
 
-        .btn-gold:hover {
+        .btn-accent {
+            background: var(--accent);
+            color: #0f1012;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #d4af65;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(201, 160, 99, 0.4);
-            background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
         }
 
         .btn-outline {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
             background: transparent;
             color: var(--text-main);
-            font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border: 1px solid var(--border-color);
-            border-radius: 2px;
-            transition: var(--transition);
+            border: 1px solid var(--border);
         }
 
         .btn-outline:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            background: rgba(201, 160, 99, 0.05);
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
         }
 
-        /* Mobile Menu Toggle */
         .mobile-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--text-main);
             cursor: pointer;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero --- */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(180deg, rgba(13,14,16,0.6) 0%, rgba(13,14,16,0.95) 100%), 
+            position: relative;
+            padding: 8rem 2rem 5rem;
+            background: linear-gradient(180deg, rgba(15,16,18,0.4) 0%, rgba(15,16,18,1) 100%),
                         url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
         }
 
-        .hero-content {
-            max-width: 900px;
-            text-align: center;
-            z-index: 1;
+        .hero-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .hero-subtitle {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+        .hero-body {
+            max-width: 750px;
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.8rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .hero-title em {
-            font-style: italic;
-            color: var(--accent-gold);
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-badge {
+        .tag {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(22, 24, 28, 0.8);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            font-size: 0.85rem;
-            color: var(--text-main);
-        }
-
-        .hero-badge i {
-            color: var(--accent-gold);
-        }
-
-        /* --- Features Strip --- */
-        .features-bar {
-            background: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 2.5rem 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .features-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(201, 160, 99, 0.08);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .feature-text h4 {
-            font-size: 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
             font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             color: var(--text-main);
-            margin-bottom: 0.2rem;
         }
 
-        .feature-text p {
-            font-size: 0.8rem;
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
             color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+            line-height: 1.8;
         }
 
-        /* --- General Section Layout --- */
+        .hero-actions {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- Section Styling --- */
         section {
             padding: 7rem 2rem;
-            position: relative;
         }
 
         .section-header {
-            text-align: center;
-            max-width: 650px;
+            max-width: 1240px;
             margin: 0 auto 4rem;
         }
 
-        .section-subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-gold);
-            margin-bottom: 0.8rem;
-            display: block;
-            font-weight: 600;
-        }
-
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--text-main);
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 300;
-        }
-
-        .gold-divider {
-            height: 1px;
-            width: 60px;
-            background: var(--accent-gold);
-            margin: 1.5rem auto 0;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-top: 0.5rem;
+            line-height: 1.2;
         }
 
         /* --- About Section --- */
         .about-grid {
-            max-width: var(--container-width);
+            max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
 
-        .about-image {
+        .about-img {
             position: relative;
         }
 
-        .about-image img {
+        .about-img img {
             width: 100%;
-            height: 520px;
+            height: 560px;
             object-fit: cover;
-            border-radius: 4px;
-            filter: brightness(0.9) contrast(1.05);
-            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            filter: grayscale(15%);
         }
 
-        .about-image-card {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 1.8rem;
-            max-width: 240px;
-            border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .about-image-card p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--accent-gold);
-            line-height: 1.4;
-        }
-
-        .about-content h3 {
-            font-size: 2.2rem;
+        .about-text h3 {
+            font-size: 2.4rem;
             margin-bottom: 1.5rem;
-            font-weight: 400;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
-        .about-content p {
+        .about-text p {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
             font-size: 0.98rem;
             font-weight: 300;
+            margin-bottom: 1.5rem;
             line-height: 1.8;
         }
 
-        .location-highlight {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: var(--surface-color);
-            border-left: 2px solid var(--accent-gold);
-            margin-top: 2rem;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .location-highlight i {
-            color: var(--accent-gold);
-            font-size: 1.5rem;
-        }
-
-        .location-highlight span {
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
-        /* --- Menu Section --- */
+        /* --- Menu Section (Clean Luxury Design) --- */
         .menu-section {
-            background-color: #0b0c0e;
+            background: #0c0d0e;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .menu-tabs {
+        .menu-nav {
+            max-width: 1240px;
+            margin: 0 auto 3.5rem;
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-            flex-wrap: wrap;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
         }
 
-        .tab-btn {
-            padding: 0.7rem 1.6rem;
+        .menu-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-nav-btn {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: none;
             color: var(--text-muted);
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.85rem;
             letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            border-radius: 2px;
             text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.3s var(--ease-out);
+            position: relative;
+            padding-bottom: 0.5rem;
         }
 
-        .tab-btn:hover, .tab-btn.active {
-            background: rgba(201, 160, 99, 0.1);
-            border-color: var(--accent-gold);
-            color: var(--accent-gold-light);
+        .menu-nav-btn:hover, .menu-nav-btn.active {
+            color: var(--accent);
         }
 
-        .menu-category-content {
-            display: none;
-            max-width: var(--container-width);
+        .menu-nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .menu-container {
+            max-width: 1240px;
             margin: 0 auto;
-            animation: fadeIn 0.5s ease;
         }
 
-        .menu-category-content.active {
-            display: block;
+        .menu-group {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease-out);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .menu-grid {
+        .menu-group.active {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 2rem;
+            gap: 3rem 4rem;
+            opacity: 1;
         }
 
-        .menu-item {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 1.8rem;
-            border-radius: 4px;
-            transition: var(--transition);
+        .menu-row {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
         }
 
-        .menu-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(201, 160, 99, 0.4);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            background: var(--surface-hover);
-        }
-
-        .menu-item-header {
+        .menu-row-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.8rem;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.8rem;
+            margin-bottom: 0.4rem;
         }
 
         .menu-item-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            font-weight: 500;
             color: var(--text-main);
-            font-weight: 600;
+        }
+
+        .menu-item-dots {
+            flex: 1;
+            border-bottom: 1px dotted rgba(255,255,255,0.15);
+            margin: 0 0.8rem;
         }
 
         .menu-item-price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-            white-space: nowrap;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent);
         }
 
         .menu-item-desc {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            font-size: 0.88rem;
             font-weight: 300;
             line-height: 1.6;
         }
 
-        .menu-tag {
-            display: inline-block;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.2rem 0.5rem;
-            background: rgba(201, 160, 99, 0.15);
-            color: var(--accent-gold);
-            border-radius: 2px;
-            margin-bottom: 0.6rem;
-            width: fit-content;
-        }
-
-        /* --- Reviews Section --- */
-        .reviews-section {
-            position: relative;
-        }
-
+        /* --- Reviews --- */
         .reviews-grid {
-            max-width: var(--container-width);
+            max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        .review-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 2.2rem;
-            border-radius: 4px;
-            position: relative;
+        .review-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .review-stars {
-            color: var(--accent-gold);
-            font-size: 0.85rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            gap: 3px;
-        }
-
-        .review-text {
-            color: var(--text-main);
-            font-size: 0.95rem;
+        .review-box p {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #e1e3e7;
+            margin-bottom: 2rem;
             font-style: italic;
-            margin-bottom: 1.8rem;
-            line-height: 1.7;
-            font-weight: 300;
         }
 
-        .review-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 1rem;
-        }
-
-        .author-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--accent-wood);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            font-weight: 600;
+        .review-meta h5 {
             font-size: 0.9rem;
-        }
-
-        .author-info h5 {
-            font-size: 0.95rem;
-            color: var(--text-main);
             font-weight: 600;
+            color: var(--text-main);
         }
 
-        .author-info span {
+        .review-meta span {
             font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        /* --- Location & Hours Section --- */
+        /* --- Info & Map --- */
         .info-section {
-            background: var(--surface-color);
-            border-top: 1px solid var(--border-color);
+            background: #0c0d0e;
+            border-top: 1px solid var(--border);
         }
 
         .info-grid {
-            max-width: var(--container-width);
+            max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .info-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.8rem;
-            font-weight: 400;
-            color: var(--text-main);
+            gap: 5rem;
         }
 
         .info-list {
             list-style: none;
+            margin-top: 2rem;
         }
 
         .info-list li {
             display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .info-list i {
-            color: var(--accent-gold);
-            font-size: 1.3rem;
-            margin-top: 0.2rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
         }
 
         .info-list h5 {
-            font-size: 1rem;
-            color: var(--text-main);
-            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
             font-weight: 600;
+            margin-bottom: 0.2rem;
         }
 
         .info-list p {
@@ -686,132 +485,63 @@
             font-weight: 300;
         }
 
-        .map-wrapper {
-            height: 100%;
-            min-height: 380px;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .map-wrapper iframe {
+        .map-box {
             width: 100%;
             height: 100%;
-            border: 0;
-            filter: grayscale(0.9) invert(0.9) contrast(1.2);
-        }
-
-        /* --- Delivery Banner --- */
-        .delivery-cta {
-            max-width: var(--container-width);
-            margin: 0 auto 6rem;
-            background: linear-gradient(135deg, rgba(22,24,28,0.9) 0%, rgba(31,34,40,0.9) 100%);
-            border: 1px solid var(--border-color);
-            padding: 3.5rem 2.5rem;
-            border-radius: 4px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .delivery-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-        }
-
-        .delivery-cta h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .delivery-cta p {
-            color: var(--text-muted);
-            max-width: 550px;
-            margin: 0 auto 2rem;
-            font-weight: 300;
+            min-height: 400px;
+            border: 1px solid var(--border);
+            filter: grayscale(1) invert(0.92) contrast(1.1);
         }
 
         /* --- Footer --- */
         footer {
-            background: #08090a;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 4rem 2rem 2rem;
+            padding: 5rem 2rem 3rem;
+            border-top: 1px solid var(--border);
             text-align: center;
         }
 
-        .footer-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-        }
-
         .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            letter-spacing: 4px;
-            color: var(--text-main);
+            font-family: var(--font-title);
+            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
 
         .footer-logo span {
-            color: var(--accent-gold);
+            color: var(--accent);
             font-style: italic;
         }
 
-        .footer-socials {
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
+            list-style: none;
             margin: 2rem 0;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
-        .footer-socials a {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            transition: var(--transition);
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent-gold);
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
+        .footer-links a:hover {
+            color: var(--accent);
         }
 
         .copyright {
+            font-size: 0.78rem;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 2rem;
-            margin-top: 2rem;
             font-weight: 300;
+            margin-top: 3rem;
         }
 
-        /* --- Mobile Responsive --- */
+        /* --- Responsive --- */
         @media (max-width: 992px) {
             .about-grid, .info-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
-
-            .about-image img {
-                height: 400px;
-            }
-
-            .about-image-card {
-                right: 10px;
-                bottom: -10px;
+            .about-img img {
+                height: 380px;
             }
         }
 
@@ -820,15 +550,12 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 80%;
-                max-width: 300px;
+                width: 100%;
                 height: 100vh;
-                background: var(--surface-color);
+                background: var(--bg);
                 flex-direction: column;
                 justify-content: center;
-                transition: var(--transition);
-                border-left: 1px solid var(--border-color);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                transition: right 0.4s var(--ease-out);
             }
 
             .nav-links.active {
@@ -844,27 +571,24 @@
                 padding: 4.5rem 1.5rem;
             }
 
-            .menu-grid {
+            .menu-group.active {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .hero-buttons {
+            .hero-actions {
                 flex-direction: column;
-                width: 100%;
             }
 
-            .hero-buttons .btn-gold, .hero-buttons .btn-outline {
+            .btn {
                 width: 100%;
-                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
-
-    <!-- Header Navigation -->
+    <!-- Navigation Header -->
     <header id="header">
         <div class="nav-container">
             <a href="#" class="logo">Woodhouse <span>skg</span></a>
@@ -878,84 +602,37 @@
                 <li><a href="#menu">Μενού</a></li>
                 <li><a href="#reviews">Αξιολογήσεις</a></li>
                 <li><a href="#info">Πληροφορίες</a></li>
-                <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" class="btn-gold"><i class="fa-solid fa-utensils"></i> Online Παραγγελία</a></li>
+                <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" class="btn btn-accent"><i class="fa-solid fa-bag-shopping"></i> Online Delivery</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fa-solid fa-location-dot"></i> Δίπλα στο Φράγμα Θέρμης, Θεσσαλονίκη
-            </div>
-            <h1 class="hero-title">Γαστρονομική εμπειρία σε ένα <em>εξαιρετικό</em> περιβάλλον</h1>
-            <p class="hero-description">
-                Ανακαλύψτε τις χειροποίητες αλμυρές & γλυκές κρέπες, τα XL σάντουιτς και τον εκλεκτό καφέ μας. Μια μοναδική απόδραση γεύσης στη Θέρμη.
-            </p>
-            <div class="hero-buttons">
-                <a href="#menu" class="btn-gold">Εξερευνήστε το Μενού</a>
-                <a href="tel:2310463612" class="btn-outline"><i class="fa-solid fa-phone"></i> 231 046 3612</a>
+        <div class="hero-inner">
+            <div class="hero-body">
+                <span class="tag"><i class="fa-solid fa-location-dot"></i> Δίπλα στο Φράγμα Θέρμης</span>
+                <h1>Γαστρονομία & καφές σε ένα <em>εξαιρετικό</em> τοπίο.</h1>
+                <p>Χειροποίητες αλμυρές & γλυκές κρέπες, XL σάντουιτς και εκλεκτός καφές σε ένα ήρεμο, φυσικό περιβάλλον στη Θέρμη.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-accent">Δείτε το Μενού</a>
+                    <a href="tel:2310463612" class="btn btn-outline"><i class="fa-solid fa-phone"></i> 231 046 3612</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Strip -->
-    <div class="features-bar">
-        <div class="features-container">
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
-                <div class="feature-text">
-                    <h4>Πρώτες Ύλες</h4>
-                    <p>Επιλεγμένα φρέσκα υλικά</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-mug-hot"></i></div>
-                <div class="feature-text">
-                    <h4>Premium Καφές</h4>
-                    <p>Εκλεκτά χαρμάνια espresso</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-stroopwafel"></i></div>
-                <div class="feature-text">
-                    <h4>Χειροποίητο Φύλλο</h4>
-                    <p>Η πιο τραγανή κρέπα</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-tree"></i></div>
-                <div class="feature-text">
-                    <h4>Φυσικό Τοπίο</h4>
-                    <p>Δίπλα στο φράγμα Θέρμης</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- About Section -->
     <section id="about">
         <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop" alt="Woodhouse SKG Interior">
-                <div class="about-image-card">
-                    <p>"Ένα μαγαζί που πραγματικά έλειπε από τη Θέρμη."</p>
-                </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop" alt="Woodhouse SKG Space">
             </div>
-            <div class="about-content">
-                <span class="section-subtitle">Η Φιλοσοφια μας</span>
-                <h3>Αυθεντικότητα, Ποιότητα & Χαλαρή Ατμόσφαιρα</h3>
-                <p>
-                    Το <strong>Woodhouse_skg</strong> δημιουργήθηκε με μεράκι για να προσφέρει μια ξεχωριστή γαστρονομική στάση. Τοποθετημένο σε ένα από τα ομορφότερα σημεία της Θεσσαλονίκης, συνδυάζει την ηρεμία της φύσης με την υψηλή ποιότητα στο φαγητό και τον καφέ.
-                </p>
-                <p>
-                    Με την self-service φιλοσοφία μας, απολαμβάνετε άμεση εξυπηρέτηση, χαμογελαστό προσωπικό και πλούσιες, εύρωστες μερίδες φτιαγμένες με τις πιο ποιοτικές πρώτες ύλες της αγοράς.
-                </p>
-                <div class="location-highlight">
-                    <i class="fa-solid fa-compass"></i>
-                    <span><strong>Τοποθεσία:</strong> Αρχή Υψηλάντου, Θέρμη (Πλησίον Φράγματος Θέρμης)</span>
-                </div>
+            <div class="about-text">
+                <span class="tag">Η Φιλοσοφία μας</span>
+                <h3>Αυθεντικές γεύσεις, προσεγμένες πρώτες ύλες</h3>
+                <p>Το <strong>Woodhouse_skg</strong> δημιουργήθηκε για όσους αναζητούν την ποιότητα στην απλότητα. Τοποθετημένο σε ένα από τα πιο όμορφα φυσικά σημεία της Θεσσαλονίκης, συνδυάζει τη χαλαρή ατμόσφαιρα με την αδιαπραγμάτευτη ποιότητα στο φαγητό.</p>
+                <p>Με την self-service φιλοσοφία μας, απολαμβάνετε άμεση εξυπηρέτηση, χαμογελαστό προσωπικό και πλούσιες, εύρωστες μερίδες φτιαγμένες πάντα τη στιγμή της παραγγελίας σας.</p>
             </div>
         </div>
     </section>
@@ -963,707 +640,403 @@
     <!-- Menu Section -->
     <section id="menu" class="menu-section">
         <div class="section-header">
-            <span class="section-subtitle">Γευστικες Επιλογες</span>
-            <h2 class="section-title">Το Μενού μας</h2>
-            <p class="section-description">Δείτε αναλυτικά τους καταλόγους μας με όλες τις αλμυρές & γλυκές δημιουργίες.</p>
-            <div class="gold-divider"></div>
+            <span class="tag">Ο Κατάλογός μας</span>
+            <h2 class="section-title">Επιλεγμένες Γεύσεις</h2>
         </div>
 
-        <!-- Menu Tabs -->
-        <div class="menu-tabs">
-            <button class="tab-btn active" onclick="openCategory(event, 'offers')">Προσφορές & Deals</button>
-            <button class="tab-btn" onclick="openCategory(event, 'savory-crepes')">Αλμυρές Κρέπες</button>
-            <button class="tab-btn" onclick="openCategory(event, 'sweet-crepes')">Γλυκές Κρέπες</button>
-            <button class="tab-btn" onclick="openCategory(event, 'sandwiches')">Sandwiches XL & Hot Dogs</button>
-            <button class="tab-btn" onclick="openCategory(event, 'clubs')">Club Sandwiches</button>
-            <button class="tab-btn" onclick="openCategory(event, 'coffee')">Καφέδες & Ροφήματα</button>
-            <button class="tab-btn" onclick="openCategory(event, 'salads')">Σαλάτες</button>
+        <div class="menu-nav">
+            <button class="menu-nav-btn active" onclick="switchCategory(event, 'm-offers')">Προσφορές & Combos</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-savory')">Αλμυρές Κρέπες</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-sweet')">Γλυκές Κρέπες</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-sandwiches')">Sandwiches XL & Hot Dogs</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-clubs')">Club Sandwiches</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-coffee')">Καφέδες & Ροφήματα</button>
+            <button class="menu-nav-btn" onclick="switchCategory(event, 'm-salads')">Σαλάτες</button>
         </div>
 
-        <!-- Category: Προσφορές -->
-        <div id="offers" class="menu-category-content active">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">1+1 Δωρο</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">1+1 Freddo Espresso</h4>
-                            <span class="menu-item-price">2,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με 1 Freddo Espresso, παίρνετε ακόμα 1 δώρο!</p>
+        <div class="menu-container">
+            <!-- Group: Offers -->
+            <div id="m-offers" class="menu-group active">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">1+1 Freddo Espresso</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">2,60 €</span>
                     </div>
+                    <p class="menu-item-desc">Με 1 Freddo Espresso, παίρνετε ακόμα 1 δώρο.</p>
                 </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Combo Deal</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Classic & Κρέπα Combo</h4>
-                            <span class="menu-item-price">12,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">1 Club sandwich classic, 1 κρέπα Merenda & 1 αναψυκτικό 330ml της επιλογής σας.</p>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Club Classic & Κρέπα Combo</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">12,50 €</span>
                     </div>
+                    <p class="menu-item-desc">1 Club sandwich classic, 1 κρέπα Merenda & 1 αναψυκτικό 330ml.</p>
                 </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Woodhouse Offer</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">2 Κρέπες Woodhouse & Πτι-Μπερ</h4>
-                            <span class="menu-item-price">8,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Δύο λαχταριστές κρέπες Woodhouse με μπισκότο Πτι-Μπερ σε ειδική τιμή.</p>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">2 Κρέπες Woodhouse & Πτι-Μπερ</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,00 €</span>
                     </div>
+                    <p class="menu-item-desc">Δύο κρέπες Woodhouse με τριμμένο μπισκότο Πτι-Μπερ.</p>
                 </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Coca-Cola Deal</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Philadelphia & Coca-Cola</h4>
-                            <span class="menu-item-price">8,16 €</span>
-                        </div>
-                        <p class="menu-item-desc">20% Έκπτωση σε 1 Club Sandwich Philadelphia & 1 Coca-Cola 330ml.</p>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Club Philadelphia & Coca-Cola</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,16 €</span>
                     </div>
+                    <p class="menu-item-desc">20% Έκπτωση σε 1 Club Philadelphia & 1 Coca-Cola 330ml.</p>
+                </div>
+            </div>
+
+            <!-- Group: Savory Crepes -->
+            <div id="m-savory" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Chili</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">6,90 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, καπνιστή μπριζόλα, αυγό βραστό, πράσινη πιπεριά & tabasco.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Chicken Boss</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">7,90 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, ψητό κοτόπουλο, μπέικον, μανιτάρια & sauce μουστάρδας.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Κρέπα Caesar's</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,00 €</span>
+                    </div>
+                    <p class="menu-item-desc">Κοτόπουλο, μαρούλι, καλαμπόκι, κεφαλοτύρι & σως Caesar.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Γιαννιώτικη</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,00 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, μπέικον, κοτομπουκιές, πατάτες τηγανητές & ουγγαρέζα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Smoky Fire</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,20 €</span>
+                    </div>
+                    <p class="menu-item-desc">Καπνιστό τυρί, καπνιστή μπριζόλα, αυγό, πατάτες & ουγγαρέζα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Κρέπα Woodhouse</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,60 €</span>
+                    </div>
+                    <p class="menu-item-desc">Edam, σαλάμι αέρος, φέτα, μανιτάρια, πιπεριά Φλωρίνης & χτυπητή.</p>
+                </div>
+            </div>
+
+            <!-- Group: Sweet Crepes -->
+            <div id="m-sweet" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Τροπική Αμαρτία</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">5,30 €</span>
+                    </div>
+                    <p class="menu-item-desc">Μερεvτα & ινδοκάρυδο.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Nutellina</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Nutella & μπισκότο Oreo.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Σοβαρά τώρα?</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">6,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Πραλίνα λευκή, μπισκότο Lotus, μπανάνα & κανέλα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Grand Merenda</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">6,70 €</span>
+                    </div>
+                    <p class="menu-item-desc">Merenda, φουντούκι & λικέρ Grand Marnier.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Woodhouse Sugarela</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,60 €</span>
+                    </div>
+                    <p class="menu-item-desc">Merenda, λευκή πραλίνα, μπισκότο Πτι-Μπερ & φράουλα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Woodhouse Biscoff Crunch</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,70 €</span>
+                    </div>
+                    <p class="menu-item-desc">Πραλίνα Woodhouse, πραλίνα Lotus Biscoff, μπανάνα & μπισκότο Lotus.</p>
+                </div>
+            </div>
+
+            <!-- Group: Sandwiches -->
+            <div id="m-sandwiches" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Sandwich Κοτόπουλο XL</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, ψητό κοτόπουλο, καλαμπόκι & μαρούλι.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Sandwich Philadelphia XL</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">5,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, γαλοπούλα, ντομάτα & τυρί Philadelphia.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Sandwich Woodhouse XL</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">6,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, μπριζόλα καπνιστή, αυγό βραστό, ντομάτα & μαγιονέζα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Hot Dog XL (22cm)</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">4,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Λουκάνικο Φρανκφούρτης 22cm, μουστάρδα, ketchup, ντομάτα, ρίγανη.</p>
+                </div>
+            </div>
+
+            <!-- Group: Clubs -->
+            <div id="m-clubs" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Club Sandwich Classic</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">7,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Γαλοπούλα, gouda, ζαμπόν, ντομάτα, μαρούλι, μαγιονέζα & πατάτες.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Club Sandwich Κοτόπουλο</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">8,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, κοτόπουλο, μαρούλι, ντομάτα, σως μουστάρδας & πατάτες.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Club Sandwich Woodhouse</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">9,00 €</span>
+                    </div>
+                    <p class="menu-item-desc">Gouda, μπριζόλα, αυγό, μπέικον, μαρούλι, ντομάτα, μαγιονέζα & πατάτες.</p>
+                </div>
+            </div>
+
+            <!-- Group: Coffee -->
+            <div id="m-coffee" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Espresso</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">2,00 €</span>
+                    </div>
+                    <p class="menu-item-desc">Μονός ή διπλός espresso από επιλεγμένο χαρμάνι.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Freddo Espresso</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">2,60 €</span>
+                    </div>
+                    <p class="menu-item-desc">Παγωμένος espresso με πλούσιο σώμα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Freddo Cappuccino</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">2,90 €</span>
+                    </div>
+                    <p class="menu-item-desc">Παγωμένος espresso με ανάλαφρο αφρόγαλα.</p>
+                </div>
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Φυσικός Χυμός Πορτοκάλι</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">3,00 €</span>
+                    </div>
+                    <p class="menu-item-desc">Φρεσκοστυμμένος χυμός.</p>
+                </div>
+            </div>
+
+            <!-- Group: Salads -->
+            <div id="m-salads" class="menu-group">
+                <div class="menu-row">
+                    <div class="menu-row-header">
+                        <span class="menu-item-title">Σαλάτα Caesar's</span>
+                        <span class="menu-item-dots"></span>
+                        <span class="menu-item-price">7,50 €</span>
+                    </div>
+                    <p class="menu-item-desc">Μαρούλι, βραστό κοτόπουλο, παρμεζάνα, κρουτόν & Caesar sauce.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Category: Αλμυρές Κρέπες -->
-        <div id="savory-crepes" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Custom</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Φτιάξτε τη δική σας Αλμυρή Κρέπα</h4>
-                            <span class="menu-item-price">από 2,30 €</span>
-                        </div>
-                        <p class="menu-item-desc">Δημιουργήστε τη δική σας αλμυρή κρέπα επιλέγοντας τα αγαπημένα σας υλικά.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Chili</h4>
-                            <span class="menu-item-price">6,90 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, καπνιστή μπριζόλα, αυγό βραστό, πράσινη πιπεριά & tabasco.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Chicken Boss</h4>
-                            <span class="menu-item-price">7,90 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, ψητό κοτόπουλο, μπέικον, μανιτάρια & sauce μουστάρδας.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Popular</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα Caesar's</h4>
-                            <span class="menu-item-price">8,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με κοτόπουλο, μαρούλι, καλαμπόκι, κεφαλοτύρι & σως Caesar.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα Chef</h4>
-                            <span class="menu-item-price">8,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με μαρούλι, ντομάτα, αγγούρι, gouda, ζαμπόν, αυγό & σως Chef.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Γιαννιώτικη</h4>
-                            <span class="menu-item-price">8,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, μπέικον, κοτομπουκιές, πατάτες τηγανητές & ουγγαρέζα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Smoky Fire</h4>
-                            <span class="menu-item-price">8,20 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με καπνιστό τυρί, καπνιστή μπριζόλα, αυγό, πατάτες τηγανητές & ουγγαρέζα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα Ότι να 'ναι</h4>
-                            <span class="menu-item-price">8,30 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με καπνιστό τυρί, σαλάμι αέρος, φέτα, πατάτες τηγανητές & κηπουρού.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Signature</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα Woodhouse</h4>
-                            <span class="menu-item-price">8,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με edam, σαλάμι αέρος, φέτα, μανιτάρια, πιπεριά Φλωρίνης & χτυπητή.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα 1994</h4>
-                            <span class="menu-item-price">9,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, καπνιστή γαλοπούλα, κοτόπουλο ψητό, καλαμπόκι, μανιτάρια, chips & μαγιονέζα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα Μακρίνα</h4>
-                            <span class="menu-item-price">10,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με καπνιστό τυρί, gouda, φέτα, καλαμπόκι, κοτόπουλο, chips & μαγιονέζα.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Γλυκές Κρέπες -->
-        <div id="sweet-crepes" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Custom</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Φτιάξτε τη δική σας Γλυκιά Κρέπα</h4>
-                            <span class="menu-item-price">από 2,30 €</span>
-                        </div>
-                        <p class="menu-item-desc">Επιλέξτε πραλίνες, μπισκότα, φρούτα και ξηρούς καρπούς της αρεσκείας σας.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Τροπική Αμαρτία</h4>
-                            <span class="menu-item-price">5,30 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με μερέντα & ινδοκάρυδο.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Nutellina</h4>
-                            <span class="menu-item-price">5,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με Nutella & τριμμένο μπισκότο Oreo.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Σοβαρά τώρα?</h4>
-                            <span class="menu-item-price">6,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με πραλίνα λευκή, μπισκότο Lotus, φρέσκια μπανάνα & κανέλα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Grand Merenda</h4>
-                            <span class="menu-item-price">6,70 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με Merenda, τριμμένο φουντούκι & λικέρ Grand Marnier.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Κρέπα 1991</h4>
-                            <span class="menu-item-price">7,20 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με πραλίνα bitter, λευκή σοκολάτα & φρούτο μπανάνα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Διχασμένη Προσωπικότητα</h4>
-                            <span class="menu-item-price">7,30 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με πραλίνα bitter, λευκή πραλίνα & μπισκότο Lotus.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Γλυκιά Καταστροφή</h4>
-                            <span class="menu-item-price">7,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λευκή πραλίνα, φρέσκια φράουλα & κομμάτια Lila Pause.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Signature</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Woodhouse Sugarela</h4>
-                            <span class="menu-item-price">8,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με Merenda, λευκή πραλίνα, μπισκότο Πτι-Μπερ & φρούτο φράουλα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Must Try</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Woodhouse Biscoff Crunch</h4>
-                            <span class="menu-item-price">8,70 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με πραλίνα Woodhouse (σοκολάτα γάλακτος), πραλίνα Lotus Biscoff, μπανάνα & μπισκότο Lotus.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Θα το μετανιώσω αύριο</h4>
-                            <span class="menu-item-price">9,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με πραλίνα bitter, πραλίνα μπανάνα, φρέσκια φράουλα & μπισκότο Πτι-Μπερ.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Sandwiches XL & Hot Dogs -->
-        <div id="sandwiches" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Γαλοπούλα XL</h4>
-                            <span class="menu-item-price">από 5,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, καπνιστή γαλοπούλα, ντομάτα & μαγιονέζα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Μανούρι XL</h4>
-                            <span class="menu-item-price">από 5,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λευκό ψωμί sandwich, μανούρι, ντομάτα, ελιά & αγγούρι.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Κοτόπουλο XL</h4>
-                            <span class="menu-item-price">από 5,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, ψητό κοτόπουλο, καλαμπόκι & μαρούλι.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Philadelphia XL</h4>
-                            <span class="menu-item-price">από 5,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λευκό ψωμί, gouda, γαλοπούλα, ντομάτα & τυρί Philadelphia.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Κοτομπουκιές XL</h4>
-                            <span class="menu-item-price">6,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λευκό ψωμί, gouda, κοτομπουκιές, chips & sauce μουστάρδας.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Signature</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Sandwich Woodhouse XL</h4>
-                            <span class="menu-item-price">από 6,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λευκό ψωμί, gouda, καπνιστή μπριζόλα, βραστό αυγό, ντομάτα & μαγιονέζα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Hot Dog XL (22cm)</h4>
-                            <span class="menu-item-price">από 4,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λουκάνικο Φρανκφούρτης 22cm, μουστάρδα, ketchup, ντομάτα, αλάτι & ρίγανη.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Hot Dog XL Special</h4>
-                            <span class="menu-item-price">6,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με λουκάνικο 22cm, μουστάρδα, ketchup, ντομάτα, gouda, πατάτες τηγανητές & μαγιονέζα.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Club Sandwiches -->
-        <div id="clubs" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Sandwich Classic</h4>
-                            <span class="menu-item-price">από 7,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με γαλοπούλα, gouda, ζαμπόν, ντομάτα, μαρούλι & μαγιονέζα. Συνοδεύεται από πατάτες τηγανητές.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Sandwich Μπέικον</h4>
-                            <span class="menu-item-price">από 7,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με μπέικον, gouda, ντομάτα, μαρούλι & μαγιονέζα. Συνοδεύεται από πατάτες τηγανητές.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Sandwich Philadelphia</h4>
-                            <span class="menu-item-price">από 8,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με γαλοπούλα, gouda, ζαμπόν, ντομάτα, μαρούλι & Philadelphia. Συνοδεύεται από πατάτες τηγανητές.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Sandwich Κοτόπουλο</h4>
-                            <span class="menu-item-price">από 8,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, κοτόπουλο, μαρούλι, ντομάτα & σως μουστάρδας. Συνοδεύεται από πατάτες τηγανητές.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Signature</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Club Sandwich Woodhouse</h4>
-                            <span class="menu-item-price">από 9,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Με gouda, μπριζόλα, βραστό αυγό, μπέικον, μαρούλι, ντομάτα & μαγιονέζα. Συνοδεύεται από πατάτες.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Καφέδες & Ροφήματα -->
-        <div id="coffee" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Espresso / Ristretto / Lungo</h4>
-                            <span class="menu-item-price">2,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Δυνατός & πλούσιος καφές γεμάτος ένταση & άρωμα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Popular</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Freddo Espresso</h4>
-                            <span class="menu-item-price">2,60 €</span>
-                        </div>
-                        <p class="menu-item-desc">Η ένταση του espresso σε μια δροσερή, βελούδινη εκδοχή.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Cappuccino</h4>
-                            <span class="menu-item-price">2,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Espresso με πλούσιο, βελούδινο αφρόγαλα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Freddo Cappuccino</h4>
-                            <span class="menu-item-price">2,90 €</span>
-                        </div>
-                        <p class="menu-item-desc">Παγωμένος espresso με ανάλαφρο κρύο αφρόγαλα.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Σοκολάτα (Κλασική / Λευκή / Lila Pause / No Sugar)</h4>
-                            <span class="menu-item-price">από 3,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Απολαυστικό ρόφημα σοκολάτας σε διάφορες γεύσεις.</p>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Φυσικός Χυμός Πορτοκάλι</h4>
-                            <span class="menu-item-price">3,00 €</span>
-                        </div>
-                        <p class="menu-item-desc">Φρεσκοστυμμένος χυμός από επιλεγμένα πορτοκάλια.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Σαλάτες -->
-        <div id="salads" class="menu-category-content">
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div>
-                        <span class="menu-tag">Popular</span>
-                        <div class="menu-item-header">
-                            <h4 class="menu-item-title">Σαλάτα Caesar's</h4>
-                            <span class="menu-item-price">7,50 €</span>
-                        </div>
-                        <p class="menu-item-desc">Σαλάτα με φρέσκο μαρούλι, βραστό κοτόπουλο, παρμεζάνα, τραγανά κρουτόν & αυθεντική Caesar sauce.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3.5rem;">
-            <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" class="btn-gold">
-                <i class="fa-solid fa-arrow-right-long"></i> Δείτε το πλήρες μενού & παραγγείλτε στο efood
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" class="btn btn-outline">
+                Πλήρης κατάλογος στο efood <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.3rem;"></i>
             </a>
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section id="reviews" class="reviews-section">
+    <!-- Reviews -->
+    <section id="reviews">
         <div class="section-header">
-            <span class="section-subtitle">Εμπειριες Επισκεπτων</span>
-            <h2 class="section-title">Τι Λένε για Εμάς</h2>
-            <p class="section-description">Πραγματικές κριτικές από επισκέπτες που δοκίμασαν τις γεύσεις μας.</p>
-            <div class="gold-divider"></div>
+            <span class="tag">Εμπειρίες</span>
+            <h2 class="section-title">Τι λέτε για εμάς</h2>
         </div>
 
         <div class="reviews-grid">
-            <div class="review-card">
-                <div>
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Η πιο ωραία κρέπα της πόλης, χωρίς καμία υπερβολή! Τρομερό φύλλο, πεντανόστιμες πρώτες ύλες και εύρωστες μερίδες! Όλοι οι εργαζόμενοι είναι εξυπηρετικοί και χαμογελαστοί. Ένα μαγαζί που πραγματικά έλειπε από τη Θέρμη!"</p>
-                </div>
-                <div class="review-author">
-                    <div class="author-avatar">MD</div>
-                    <div class="author-info">
-                        <h5>Maria Dalamitra</h5>
-                        <span>Google Review</span>
-                    </div>
+            <div class="review-box">
+                <p>"Η πιο ωραία κρέπα της πόλης, χωρίς καμία υπερβολή! Τρομερό φύλλο, πεντανόστιμες πρώτες ύλες και εύρωστες μερίδες."</p>
+                <div class="review-meta">
+                    <h5>Maria Dalamitra</h5>
+                    <span>Google Reviews</span>
                 </div>
             </div>
-
-            <div class="review-card">
-                <div>
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Τέλειο μαγαζί σε υπέροχη τοποθεσία δίπλα στο φράγμα Θέρμης!! Φάγαμε κρέπες και ήπιαμε πολύ ωραίο καφέ!! Πρέπει να δοκιμάσετε οπωσδήποτε!!"</p>
-                </div>
-                <div class="review-author">
-                    <div class="author-avatar">SM</div>
-                    <div class="author-info">
-                        <h5>Sofia M.</h5>
-                        <span>Google Review</span>
-                    </div>
+            <div class="review-box">
+                <p>"Τέλειο μαγαζί σε υπέροχη τοποθεσία δίπλα στο φράγμα Θέρμης!! Φάγαμε κρέπες και ήπιαμε πολύ ωραίο καφέ."</p>
+                <div class="review-meta">
+                    <h5>Sofia M.</h5>
+                    <span>Google Reviews</span>
                 </div>
             </div>
-
-            <div class="review-card">
-                <div>
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Πήγαμε πρώτη φορά. Το μαγαζί είναι self service. Πήραμε σαλάτα Woodhouse, chicken nuggets, κασεροκροκέτες και κρέπες. Όλα εξαιρετικά, φρέσκα και γρήγορη εξυπηρέτηση!"</p>
-                </div>
-                <div class="review-author">
-                    <div class="author-avatar">P</div>
-                    <div class="author-info">
-                        <h5>Perla</h5>
-                        <span>Local Guide</span>
-                    </div>
+            <div class="review-box">
+                <p>"Όλα εξαιρετικά, φρέσκα υλικά και πολύ γρήγορη εξυπηρετική ομάδα. Ένα μαγαζί που έλειπε από τη Θέρμη."</p>
+                <div class="review-meta">
+                    <h5>Perla</h5>
+                    <span>Local Guide</span>
                 </div>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 3.5rem;">
-            <a href="https://maps.google.com/?cid=Woodhouse_skg" target="_blank" class="btn-outline">
-                <i class="fa-brands fa-google"></i> Δείτε όλες τις ζωντανές αξιολογήσεις στο Google Maps
+            <a href="https://maps.google.com/?cid=Woodhouse_skg" target="_blank" class="btn btn-outline">
+                <i class="fa-brands fa-google"></i> Δείτε όλες τις αξιολογήσεις στο Google Maps
             </a>
         </div>
     </section>
 
-    <!-- Location & Hours Info -->
+    <!-- Info & Map -->
     <section id="info" class="info-section">
         <div class="info-grid">
-            <div class="info-box">
-                <span class="section-subtitle">Επικοινωνια & Ωραριο</span>
-                <h3>Σας περιμένουμε</h3>
+            <div>
+                <span class="tag">Πληροφορίες</span>
+                <h2 class="section-title">Επισκεφθείτε μας</h2>
+                
                 <ul class="info-list">
                     <li>
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
                             <h5>Διεύθυνση</h5>
-                            <p>Αρχή Υψηλάντου, Θέρμη, Θεσσαλονίκη, Τ.Κ. 570 01<br><small style="color: var(--accent-gold);">(Πλησίον Φράγματος Θέρμης)</small></p>
+                            <p>Αρχή Υψηλάντου, Θέρμη 570 01 (Πλησίον Φράγματος)</p>
                         </div>
                     </li>
                     <li>
                         <i class="fa-solid fa-clock"></i>
                         <div>
                             <h5>Ώρες Λειτουργίας</h5>
-                            <p>Δευτέρα - Κυριακή: Ανοιχτά έως 12:00 α.μ.</p>
+                            <p>Καθημερινά: Ανοιχτά έως 12:00 α.μ.</p>
                         </div>
                     </li>
                     <li>
                         <i class="fa-solid fa-phone"></i>
                         <div>
-                            <h5>Τηλέφωνο Επικοινωνίας</h5>
-                            <p><a href="tel:2310463612" style="color: var(--accent-gold); font-weight: 500;">231 046 3612</a></p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-concierge-bell"></i>
-                        <div>
-                            <h5>Τύπος Εξυπηρέτησης</h5>
-                            <p>Self Service · Φαγητό στον χώρο · Παραλαβή & Delivery</p>
+                            <h5>Τηλέφωνο</h5>
+                            <p><a href="tel:2310463612" style="color: var(--accent);">231 046 3612</a></p>
                         </div>
                     </li>
                 </ul>
             </div>
-            
-            <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.182390192023!2d23.0235!3d40.5485!2m3!1f0!0!f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMyJzU0LjYiTiAyM8KwMDEnMjQuNiJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+
+            <iframe class="map-box" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.182390192023!2d23.0235!3d40.5485!2m3!1f0!0!f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMyJzU0LjYiTiAyM8KwMDEnMjQuNiJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
-    <!-- Online Ordering Banner -->
-    <div style="background: var(--bg-color); padding: 0 2rem;">
-        <div class="delivery-cta">
-            <h3>Θέλετε το Woodhouse στο χώρο σας;</h3>
-            <p>Παραγγείλτε τώρα εύκολα & γρήγορα τις αγαπημένες σας κρέπες και καφέδες μέσω του efood.</p>
-            <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" class="btn-gold">
-                <i class="fa-solid fa-bag-shopping"></i> Παραγγειλτε Online
-            </a>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo">Woodhouse <span>skg</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto; font-weight: 300;">
-                Premium αλμυρές & γλυκές γεύσεις, εκλεκτός καφές και μοναδική ατμόσφαιρα δίπλα στο Φράγμα Θέρμης.
-            </p>
-            <div class="footer-socials">
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://maps.google.com/?cid=Woodhouse_skg" target="_blank" aria-label="Google Maps"><i class="fa-solid fa-location-dot"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; Woodhouse_skg. All rights reserved.
-            </div>
-        </div>
+        <div class="footer-logo">Woodhouse <span>skg</span></div>
+        <ul class="footer-links">
+            <li><a href="#about">Σχετικά</a></li>
+            <li><a href="#menu">Μενού</a></li>
+            <li><a href="#info">Επικοινωνία</a></li>
+            <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank">Efood</a></li>
+        </ul>
+        <p class="copyright">&copy; Woodhouse_skg. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Dynamic Interactions -->
+    <!-- JavaScript -->
     <script>
-        // Header Scroll Effect
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 40) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileToggle = document.getElementById('mobile-toggle');
         const navLinks = document.getElementById('nav-links');
 
-        mobileToggle.addEventListener('click', function() {
+        mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if(navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                if(icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
             });
         });
 
-        // Menu Tab Switcher
-        function openCategory(evt, categoryName) {
-            let i, tabcontent, tablinks;
-            
-            tabcontent = document.getElementsByClassName("menu-category-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
+        // Menu category switcher
+        function switchCategory(evt, categoryId) {
+            const groups = document.querySelectorAll('.menu-group');
+            const btns = document.querySelectorAll('.menu-nav-btn');
 
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
+            groups.forEach(group => group.classList.remove('active'));
+            btns.forEach(btn => btn.classList.remove('active'));
 
-            document.getElementById(categoryName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            document.getElementById(categoryId).classList.add('active');
+            evt.currentTarget.classList.add('active');
         }
     </script>
 </body>
