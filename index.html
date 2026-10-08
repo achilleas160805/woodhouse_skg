@@ -169,6 +169,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener" class="btn d">Πλήρες μενού στο efood</a>
 </div>
 </div>
+<p class="nt" style="max-width:34rem;margin:0 0 clamp(1.5rem,4vw,2.5rem)">Στο Woodhouse θα βρείτε χειροποίητες κρέπες — αλμυρές και γλυκές — φτιαγμένες πάντα τη στιγμή της παραγγελίας σας, XL sandwiches και club sandwiches, hot dogs, μερίδες και σαλάτες, καθώς και εκλεκτούς καφέδες (espresso, cappuccino, freddo, frappé, ελληνικό) και αναψυκτικά. Για όλες τις επιλογές, τις τιμές και παραγγελία delivery, δείτε το πλήρες μενού μας στο efood. <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener">Παραγγελία στο efood</a>.</p>
 <div class="mg">
 <nav class="rail" id="rail" aria-label="Κατηγορίες μενού"></nav>
 <div id="cats"></div>
@@ -198,7 +199,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <div><dt>Τηλέφωνο</dt><dd><a href="tel:2310463612">231 046 3612</a></dd></div>
 </dl>
 </div>
-<iframe class="map" title="Χάρτης Woodhouse SKG" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.182390192023!2d23.0235!3d40.5485!2m3!1f0!0!f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMyJzU0LjYiTiAyM8KwMDEnMjQuNiJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" allowfullscreen></iframe>
+<iframe class="map" title="Χάρτης Woodhouse SKG" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.182390192023!2d23.0235!3d40.5485!2m3!1f0!0!f0!3f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMyJzU0LjYiTiAyM8KwMDEnMjQuNiJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" allowfullscreen></iframe>
 </div>
 </section>
 </main>
@@ -220,59 +221,20 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 const E='https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993';
 /* Μενού: [όνομα, περιγραφή, τιμή]. Αν η τιμή είναι κενή (''), δεν εμφανίζεται. */
 const M=[
-{id:'offers',t:'Προσφορές',i:[
-['20% έκπτωση σε club sandwich Philadelphia & Coca-Cola','Σε 1 club sandwich Philadelphia & 1 Coca-Cola 330ml.','8,16']]},
-{id:'kids',t:'Woodhouse kids',i:[
-['Woodhouse kids','1 mini κρέπα αλμυρή με gouda & γαλοπούλα & 1 mini κρέπα γλυκιά με Merenda & μπισκότο της επιλογής σας.','']]},
-{id:'mycrepa',t:'My crepa',i:[
-['Φτιάξτε τη δική σας αλμυρή κρέπα','Δημιουργήστε τη δική σας αλμυρή κρέπα με τα αγαπημένα σας υλικά. Η τελική τιμή καθορίζεται από τις επιλογές σας.','από 2,30'],
-['Φτιάξτε τη δική σας γλυκιά κρέπα','Δημιουργήστε τη δική σας γλυκιά κρέπα με τα αγαπημένα σας υλικά. Η τελική τιμή καθορίζεται από τις επιλογές σας.','από 2,30']]},
-{id:'savory',t:'Κρέπες αλμυρές',i:[
-['Κρέπα 1994','Με gouda, γαλοπούλα, κοτόπουλο βραστό, καλαμπόκι, μανιτάρια, chips & μαγιονέζα.','8,80'],
-['Κρέπα chili','Με gouda, μπριζόλα, αυγό βραστό, πιπεριά πράσινη & tabasco.','5,90'],
-['Κρέπα Woodhouse','Με edam, σαλάμι αέρος, φέτα, μανιτάρια, πιπεριά Φλωρίνης & χτυπητή.','8,10'],
-['Κρέπα του Chef','Με μαρούλι, ντομάτα, αγγούρι, gouda, ζαμπόν, αυγό & σως Chef.','7,80'],
-['Κρέπα Ότι να ναι','Με καπνιστό τυρί, σαλάμι αέρος, φέτα, πατάτες τηγανητές & κηπουρού.','8,00'],
-['Κρέπα Μακρίνα','Με καπνιστό τυρί, gouda, φέτα, καλαμπόκι, κοτόπουλο, chips & μαγιονέζα.','10,30']]},
-{id:'sweet',t:'Κρέπες γλυκές',n:'Περισσότερες επιλογές και τιμές στο efood.',i:[
-['Κρέπα Nutellina','Με Nutella & μπισκότο Oreo.',''],
-['Κρέπα 1991','Με πραλίνα bitter, σοκολάτα λευκή & μπανάνα φρούτο.',''],
-['Διχασμένη προσωπικότητα','',''],
-['Τροπική Αμαρτία','Με μερέντα & ινδοκάρυδο.','5,20'],
-['Σοβαρά τώρα!','','']]},
-{id:'sides',t:'Μερίδες',i:[
-['Κοτομπουκιές μερίδα','Συνοδεύονται από πατάτες τηγανητές.','8,00']]},
-{id:'hotdog',t:'Hot dog',i:[
-['Hot dog XL','Με λουκάνικο Φρανκφούρτης 22cm, μουστάρδα, ketchup, ντομάτα, αλάτι & ρίγανη.','4,50'],
-['Hot dog XL Special','Με λουκάνικο Φρανκφούρτης 22cm, μουστάρδα, ketchup, ντομάτα, αλάτι, ρίγανη, gouda, πατάτες τηγανητές & μαγιονέζα.','6,50']]},
-{id:'club',t:'Club sandwiches',n:'Οι τιμές είναι διαθέσιμες στο efood.',i:[
-['Club sandwich classic','',''],
-['Club sandwich μπέικον','Με μπέικον, gouda, ντομάτα, μαρούλι & μαγιονέζα.',''],
-['Club sandwich Philadelphia','Με γαλοπούλα, gouda, ζαμπόν, ντομάτα, μαρούλι & Philadelphia.',''],
-['Club sandwich Woodhouse','Με gouda, μπριζόλα, αυγό βραστό, μπέικον, μαρούλι, ντομάτα & μαγιονέζα.',''],
-['Club sandwich κοτόπουλο','Με gouda, κοτόπουλο, μαρούλι, ντομάτα & σως μουστάρδας.',''],
-['Club sandwich αλλαντικών','Με gouda, ζαμπόν, μπριζόλα, μπέικον, γαλοπούλα, σαλάμι αέρος, μαρούλι, ντομάτα & μαγιονέζα.','']]},
-{id:'myclub',t:'My club sandwich',i:[
-['Φτιάξτε το δικό σας club sandwich','Δημιουργήστε το δικό σας club sandwich με τα αγαπημένα σας υλικά.','']]},
-{id:'sand',t:'Sandwiches',n:'Οι τιμές είναι διαθέσιμες στο efood.',i:[
-['Φτιάξτε το δικό σας sandwich','Δημιουργήστε το δικό σας sandwich με τα αγαπημένα σας υλικά.',''],
-['Sandwich Philadelphia','Με λευκό ψωμί sandwich, gouda, γαλοπούλα, ντομάτα & Philadelphia.',''],
-['Sandwich Woodhouse','Με λευκό ψωμί sandwich, gouda, μπριζόλα καπνιστή, αυγό βραστό, ντομάτα & μαγιονέζα.',''],
-['Sandwich μανούρι','Με λευκό ψωμί sandwich, μανούρι, ντομάτα, ελιά & αγγούρι.','']]},
+{id:'offers',t:'Προσφορές',i:[]},
+{id:'kids',t:'Woodhouse kids',i:[]},
+{id:'mycrepa',t:'My crepa',i:[]},
+{id:'savory',t:'Κρέπες αλμυρές',i:[]},
+{id:'sweet',t:'Κρέπες γλυκές',i:[]},
+{id:'sides',t:'Μερίδες',i:[]},
+{id:'hotdog',t:'Hot dog',i:[]},
+{id:'club',t:'Club sandwiches',i:[]},
+{id:'myclub',t:'My club sandwich',i:[]},
+{id:'sand',t:'Sandwiches',i:[]},
 {id:'croissant',t:'My croissant',i:[]},
-{id:'coffee',t:'Καφέδες',n:'Περισσότεροι καφέδες στο efood.',i:[
-['Espresso','Ένας δυνατός & πλούσιος καφές γεμάτος ένταση & άρωμα.','από 2,00'],
-['Espresso ristretto','Ένας δυνατός & πλούσιος καφές γεμάτος ένταση & άρωμα.','από 2,00'],
-['Espresso lungo','Ένας δυνατός & πλούσιος καφές γεμάτος ένταση & άρωμα.','από 2,00'],
-['Cappuccino','Ένας δυνατός espresso με πλούσιο, βελούδινο αφρόγαλα.','από 2,50'],
-['Cappuccino latte','Ένας καφές με πλούσιο εσωτερικό κόσμο, αφού κρύβει το γάλα και στο εσωτερικό του.','από 3,10'],
-['Freddo cappuccino','Παγωμένος espresso με κρύο αφρόγαλα.','από 2,90'],
-['Frappe','Ο κλασικός ελληνικός στιγμιαίος καφές που αγαπάς.','από 2,20'],
-['Ελληνικός','Αν εσύ ψήνεσαι για καφέ, ο ελληνικός ψήνεται σίγουρα!','από 2,00']]},
+{id:'coffee',t:'Καφέδες',i:[]},
 {id:'salad',t:'Σαλάτες',i:[]},
-{id:'drinks',t:'Αναψυκτικά',n:'Περισσότερα αναψυκτικά στο efood.',i:[
-['Coca-Cola 330ml','Η κλασική, μοναδική γεύση που αγαπάς.','2,20'],
-['Coca-Cola zero 330ml','','2,20']]}
+{id:'drinks',t:'Αναψυκτικά',i:[]}
 ];
 const rail=document.getElementById('rail');
 rail.innerHTML=M.map(c=>`<a href="#c-${c.id}">${c.t}</a>`).join('');
