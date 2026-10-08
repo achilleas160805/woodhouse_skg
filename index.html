@@ -97,7 +97,8 @@ nav .btn:hover{color:var(--wd)}
 .dl div{padding:1.3rem 0;border-top:1px solid var(--line)}
 .dl dt{font-size:.85rem;color:var(--br);margin-bottom:.2rem}
 .dl dd{font:300 1.35rem/1.4 var(--serif)}
-.map{width:100%;height:100%;min-height:360px;border:0;background:#3a291d}
+.map{width:100%;height:100%;min-height:360px;border:0;background:#3a291d;filter:blur(2.5px) grayscale(.9) sepia(.4) brightness(.7) contrast(1.05) hue-rotate(-15deg);transform:scale(1.02);transition:filter .5s var(--ease),transform .5s var(--ease);will-change:filter,transform}
+.map:hover,.map:focus,.map:focus-within{filter:none;transform:scale(1)}
 .rev,#info{content-visibility:auto;contain-intrinsic-size:auto 700px}
 footer{padding:4rem 0 calc(3rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);text-align:center}
 footer .logo{font-size:2.2rem;display:block;margin-bottom:1.5rem}
@@ -124,6 +125,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 @media(prefers-reduced-motion:reduce){
 .hero h1,.hero-row,.hero::before,.tw .ch{animation:none}
 .tw .ch{opacity:1;filter:none;transform:none}
+.map{transition:none}
 *{transition-duration:.01ms!important}
 }
 </style>
