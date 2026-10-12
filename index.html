@@ -1,176 +1,174 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Woodhouse SKG | Κρέπες, sandwiches & καφές στη Θέρμη</title>
-  <meta name="description" content="Χειροποίητες κρέπες, XL sandwiches, club sandwiches και καφές δίπλα στο Φράγμα Θέρμης. Παραγγείλτε online.">
-  <meta name="theme-color" content="#2b1d15">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g fill='none' stroke='%23cf9a5c' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M20 10 H44 L42 54 a4 4 0 0 1 -4 4 H26 a4 4 0 0 1 -4 -4 Z' fill='%23efe3d0'/><path d='M21 26 H43'/><path d='M32 10 L32 6' stroke='%23efe3d0'/><path d='M32 6 L42 2' stroke='%23efe3d0'/></g><circle cx='50' cy='14' r='6' fill='%23efe3d0' stroke='%23cf9a5c' stroke-width='3'/><path d='M50 8 v6' stroke='%23cf9a5c' stroke-width='2' stroke-linecap='round'/></svg>">
-  <script>document.documentElement.classList.add('js')</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Commissioner:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --wd: #2b1d15;
-      --wd2: #35251b;
-      --ink: #efe3d0;
-      --mute: #b5a48d;
-      --line: rgba(239, 227, 208, .16);
-      --br: #cf9a5c;
-      --st: #e0cfb2;
-      --si: #2b1d15;
-      --sm: #5e4a3a;
-      --sl: rgba(43, 29, 21, .22);
-      --pad: clamp(1.25rem, 4vw, 2.5rem);
-      --h: 64px;
-      --top: calc(var(--h) + env(safe-area-inset-top, 0px));
-      --serif: 'Noto Serif Display', Georgia, serif;
-      --sans: 'Commissioner', system-ui, sans-serif;
-      --ease: cubic-bezier(.22, 1, .36, 1);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--wd); -webkit-text-size-adjust: 100%; }
-    body { background: var(--wd); color: var(--ink); font: 400 1rem/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-    :focus-visible { outline: 2px solid var(--br); outline-offset: 3px; }
-    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad); }
-    .sec { padding: clamp(4.5rem, 10vw, 8rem) 0; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: .9rem 1.7rem; border-radius: 99px; font-size: .92rem; font-weight: 500; background: var(--ink); color: var(--wd); border: 1px solid var(--ink); transition: background-color .25s, color .25s, border-color .25s; cursor: pointer; }
-    .btn:hover { background: var(--br); border-color: var(--br); }
-    .btn.o { background: transparent; color: var(--ink); border-color: var(--line); }
-    .btn.o:hover { border-color: var(--ink); }
-    .btn.d { background: var(--si); color: var(--st); border-color: var(--si); }
-    .btn.d:hover { background: transparent; color: var(--si); }
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); border-bottom: 1px solid transparent; transition: background-color .3s, border-color .3s; }
-    header.s { background: rgba(43, 29, 21, .97); border-color: var(--line); }
-    .bar { height: var(--h); display: flex; align-items: center; justify-content: space-between; }
-    .logo { font: 300 1.5rem/1 var(--serif); letter-spacing: .01em; position: relative; z-index: 60; }
-    .logo .skg { display: block; font: 400 .72rem/1 var(--sans); letter-spacing: .28em; color: var(--br); margin-top: .28rem; text-transform: uppercase; }
-    nav ul { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    nav a { font-size: .92rem; color: var(--mute); transition: color .2s; }
-    nav a:hover { color: var(--ink); }
-    nav .btn { color: var(--wd); padding: .6rem 1.25rem; }
-    nav .btn:hover { color: var(--wd); }
-    .burger { display: none; width: 44px; height: 44px; position: relative; z-index: 60; }
-    .burger span { position: absolute; left: 11px; right: 11px; height: 1px; background: var(--ink); transition: transform .35s var(--ease), top .35s var(--ease); }
-    .burger span:first-child { top: 18px; }
-    .burger span:last-child { top: 25px; }
-    .open .burger span:first-child { top: 21px; transform: rotate(45deg); }
-    .open .burger span:last-child { top: 21px; transform: rotate(-45deg); }
-    .hero { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: var(--top); background: var(--wd); }
-    .hero::before { content: ""; position: absolute; inset: -6% -4%; z-index: -2; background: url('hero.jpg') center/cover no-repeat; transform: translate3d(0, var(--p, 0px), 0) scale(1.06); animation: kenburns 28s var(--ease) infinite alternate; will-change: transform; }
-    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(43, 29, 21, .55) 0%, rgba(43, 29, 21, .45) 40%, #2b1d15 100%); }
-    .hero h1 { font-weight: 300; font-size: clamp(3.6rem, 18vw, 15rem); letter-spacing: -.035em; line-height: .95; margin-left: -.04em; animation: rise 1.2s var(--ease) both; }
-    .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; margin-top: clamp(1.2rem, 3vw, 2rem); animation: rise 1.2s .2s var(--ease) both; }
-    .hero p { max-width: 30rem; color: #d6c8b2; font-size: 1.05rem; }
-    .acts { display: flex; gap: .8rem; flex-wrap: wrap; }
-    .facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); margin-top: clamp(2.5rem, 7vh, 4.5rem); }
-    .facts div { padding: 1.3rem 0; color: var(--mute); font-size: .9rem; }
-    .facts div+div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-    .facts b { display: block; font: 400 1.3rem/1.3 var(--serif); color: var(--ink); }
-    @keyframes rise { from { opacity: 0; transform: translateY(22px); } }
-    @keyframes kenburns { from { transform: translate3d(0, var(--p, 0px), 0) scale(1.06) translate(-1.5%, -1%); } to { transform: translate3d(0, var(--p, 0px), 0) scale(1.18) translate(1.5%, 1%); } }
-    .tw { display: inline-block; white-space: nowrap; letter-spacing: -.035em; }
-    .tw .ch { display: inline-block; letter-spacing: normal; opacity: 0; filter: blur(10px); transform: translateY(8px); animation: heroWrite 1.2s var(--ease) forwards; }
-    .tw .ch + .ch { margin-left: -.035em; }
-    @keyframes heroWrite { to { opacity: 1; filter: blur(0); transform: none; } }
-    .skg-big { display: block; font: 400 clamp(.9rem, 1.6vw, 1.4rem)/1 var(--sans); letter-spacing: .4em; color: var(--br); margin-top: .5rem; margin-left: .05em; text-transform: uppercase; animation: rise 1.2s .4s var(--ease) both; }
-    .about { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 7vw, 6rem); align-items: start; }
-    .about h2 { font-size: clamp(2.3rem, 4.8vw, 4rem); font-weight: 300; }
-    .about p { color: #c9b9a1; margin-bottom: 1.3rem; max-width: 34rem; }
-    #events { background: var(--wd2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .dam { position: relative; isolation: isolate; overflow: hidden; background: var(--wd2); border-top: 1px solid var(--line); contain: paint; }
-    .dam::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url('hero5.jpg') center/cover no-repeat; transform: scale(1.02); }
-    .dam::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(43, 29, 21, .55) 0%, rgba(43, 29, 21, .35) 50%, rgba(43, 29, 21, .7) 100%); }
-    .dam-inner { max-width: 52rem; position: relative; z-index: 1; }
-    .dam h2 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); font-weight: 300; margin-bottom: clamp(1.5rem, 4vw, 2.2rem); }
-    .dam p { color: #e8dcc7; margin-bottom: 1.3rem; max-width: 44rem; }
-    #menu { background: var(--st) repeating-linear-gradient(90deg, rgba(43, 29, 21, .035) 0 1px, transparent 1px 9px); color: var(--si); }
-    .mh { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem 3rem; flex-wrap: wrap; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-    .mh h2 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; letter-spacing: -.02em; }
-    .mh > div { text-align: center; }
-    .mh p { max-width: 22rem; color: var(--sm); font-size: .92rem; margin-bottom: .9rem; margin-left: auto; margin-right: auto; }
-    .nt { font-size: .92rem; color: var(--sm); }
-    .nt a { color: var(--si); border-bottom: 1px solid var(--si); }
-    .gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.6rem, 1.6vw, 1.1rem); margin-top: clamp(2rem, 5vw, 3rem); }
-    .gal figure { position: relative; overflow: hidden; border-radius: 12px; background: #3a291d; }
-    .gal figure:first-child { grid-column: 1 / -1; aspect-ratio: 21/9; }
-    .gal figure:not(:first-child) { aspect-ratio: 1/1; }
-    .gal img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--ease); }
-    .gal figure:hover img { transform: scale(1.06); }
-    .rev h2, #info h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); font-weight: 300; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-    .rg { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 2.5rem; }
-    .rg figure { border-top: 1px solid var(--line); padding-top: 1.5rem; }
-    .rg blockquote { font: italic 300 1.35rem/1.5 var(--serif); margin-bottom: 1.2rem; }
-    .rg figcaption { font-size: .85rem; color: var(--mute); }
-    .rg figcaption b { color: var(--ink); font-weight: 500; margin-right: .6rem; }
-    .more { margin-top: 3rem; }
-    #info { background: var(--wd2); border-top: 1px solid var(--line); }
-    .ig { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); }
-    .dl div { padding: 1.3rem 0; border-top: 1px solid var(--line); }
-    .dl dt { font-size: .85rem; color: var(--br); margin-bottom: .2rem; }
-    .dl dd { font: 300 1.35rem/1.4 var(--serif); }
-    .map { width: 100%; height: 100%; min-height: 360px; border: 0; background: #3a291d; filter: blur(2.5px) grayscale(.9) sepia(.4) brightness(.7) contrast(1.05) hue-rotate(-15deg); transform: scale(1.02); transition: filter .5s var(--ease), transform .5s var(--ease); will-change: filter, transform; }
-    .map:hover, .map:focus, .map:focus-within { filter: none; transform: scale(1); }
-    .rev, #info { content-visibility: auto; contain-intrinsic-size: auto 700px; }
-    footer { padding: 4rem 0 calc(3rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); text-align: center; }
-    footer .logo { font-size: 2.2rem; display: block; margin-bottom: 1.5rem; }
-    footer .logo .skg { font-size: .85rem; letter-spacing: .35em; margin-top: .35rem; }
-    footer ul { display: flex; justify-content: center; gap: 1.8rem; list-style: none; flex-wrap: wrap; font-size: .9rem; color: var(--mute); }
-    footer ul a:hover { color: var(--ink); }
-    footer small { display: block; margin-top: 2.5rem; color: var(--mute); font-size: .8rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Woodhouse SKG | Κρέπες, sandwiches & καφές στη Θέρμη</title>
+<meta name="description" content="Χειροποίητες κρέπες, XL sandwiches, club sandwiches και καφές δίπλα στο Φράγμα Θέρμης. Παραγγείλτε online.">
+<meta name="theme-color" content="#2b1d15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300;400&family=Commissioner:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wd:#2b1d15;--wd2:#35251b;--ink:#efe3d0;--mute:#b5a48d;
+  --line:rgba(239,227,208,.16);--br:#cf9a5c;--st:#e0cfb2;--si:#2b1d15;--sm:#5e4a3a;
+  --pad:clamp(1.25rem,4vw,2.5rem);--h:64px;
+  --top:calc(var(--h) + env(safe-area-inset-top,0px));
+  --serif:'Noto Serif Display',Georgia,serif;
+  --sans:'Commissioner',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--wd)}
+body{background:var(--wd);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.1}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+.sec{padding:clamp(3.5rem,8vw,6rem) 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.7rem;border-radius:99px;font-size:.92rem;font-weight:500;background:var(--ink);color:var(--wd);border:1px solid var(--ink);transition:background-color .25s,color .25s,border-color .25s;cursor:pointer}
+.btn:hover{background:var(--br);border-color:var(--br)}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.o:hover{border-color:var(--ink)}
+.btn.d{background:var(--si);color:var(--st);border-color:var(--si)}
+.btn.d:hover{background:transparent;color:var(--si)}
 
-    /* E-SHOP STYLES */
-    .eshop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .product-card { background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 6px 18px rgba(43, 29, 21, .06); border: 1px solid rgba(43, 29, 21, .08); transition: box-shadow .3s, transform .2s; display: flex; flex-direction: column; }
-    .product-card:hover { box-shadow: 0 12px 28px rgba(43, 29, 21, .1); transform: translateY(-2px); }
-    .product-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: .5rem; color: var(--si); }
-    .product-card .desc { font-size: .9rem; color: #5e4a3a; margin-bottom: 1rem; flex: 1; }
-    .product-card .price { font-size: 1.3rem; font-weight: 600; color: var(--si); margin-bottom: 1rem; font-family: var(--sans); }
-    .extras-list { margin: .5rem 0 1rem; }
-    .extra-row { display: flex; align-items: center; justify-content: space-between; padding: .35rem 0; font-size: .9rem; color: var(--sm); border-bottom: 1px dashed rgba(43, 29, 21, .08); }
-    .extra-row label { display: flex; align-items: center; gap: .5rem; cursor: pointer; }
-    .extra-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: #cf9a5c; cursor: pointer; }
-    .extra-row .extra-price { font-weight: 500; color: var(--si); }
-    .card-actions { display: flex; gap: .6rem; margin-top: auto; }
-    .card-actions .btn { padding: .6rem 1.2rem; font-size: .85rem; flex: 1; }
-    .cart-panel { background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 6px 18px rgba(43, 29, 21, .06); border: 1px solid rgba(43, 29, 21, .08); position: sticky; top: calc(var(--h) + 1.5rem); max-height: calc(100vh - var(--h) - 3rem); overflow-y: auto; }
-    .cart-panel h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; color: var(--si); border-bottom: 1px solid rgba(43, 29, 21, .1); padding-bottom: .8rem; }
-    .cart-items { list-style: none; margin-bottom: 1rem; }
-    .cart-item { display: flex; justify-content: space-between; align-items: flex-start; padding: .7rem 0; border-bottom: 1px solid rgba(43, 29, 21, .06); font-size: .9rem; color: var(--sm); }
-    .cart-item-info { flex: 1; }
-    .cart-item-info .item-name { font-weight: 500; color: var(--si); }
-    .cart-item-info .item-extras { font-size: .8rem; color: #7a6a5a; margin-top: .15rem; }
-    .cart-item-info .item-price { font-weight: 500; margin-top: .2rem; color: var(--si); }
-    .cart-item-actions { display: flex; align-items: center; gap: .3rem; margin-left: .8rem; }
-    .cart-item-actions button { width: 26px; height: 26px; border-radius: 50%; background: rgba(43, 29, 21, .06); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 500; color: var(--si); transition: background .2s; }
-    .cart-item-actions button:hover { background: rgba(43, 29, 21, .15); }
-    .cart-item-actions .qty { min-width: 20px; text-align: center; font-weight: 500; font-size: .9rem; }
-    .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600; padding: .8rem 0; border-top: 2px solid rgba(43, 29, 21, .1); margin-top: .5rem; color: var(--si); }
-    .cart-actions { display: flex; flex-direction: column; gap: .6rem; margin-top: 1rem; }
-    .cart-actions .btn { width: 100%; padding: .8rem; font-size: .9rem; }
-    .btn-checkout { background: #cf9a5c; color: #2b1d15; border-color: #cf9a5c; font-weight: 600; }
-    .btn-checkout:hover { background: #b8864a; border-color: #b8864a; }
-    .btn-clear { background: transparent; color: var(--sm); border: 1px solid rgba(43, 29, 21, .15); }
-    .btn-clear:hover { border-color: var(--si); color: var(--si); }
-    .empty-cart { font-size: .95rem; color: #8a7a6a; text-align: center; padding: 1.5rem 0; }
-    .eshop-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; margin-top: 2rem; }
-    @media(max-width: 900px) { .eshop-layout { grid-template-columns: 1fr; } .cart-panel { position: static; max-height: none; } }
-    @media(max-width: 900px) { .about, .ig { grid-template-columns: 1fr; } }
-    @media(max-width: 860px) { .burger { display: block; } nav ul { position: fixed; inset: 0; background: var(--wd); flex-direction: column; justify-content: center; gap: 1.5rem; opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s; } .open nav ul { opacity: 1; visibility: visible; } nav a:not(.btn) { font: 300 2rem var(--serif); color: var(--ink); } nav .btn { padding: .9rem 1.8rem; font-size: .95rem; } }
-    @media(max-width: 640px) { .facts { grid-template-columns: 1fr; } .facts div+div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .hero-row { flex-direction: column; align-items: flex-start; } .gal { grid-template-columns: 1fr; } .gal figure:first-child { aspect-ratio: 16/9; } .eshop-grid { grid-template-columns: 1fr; } }
-    @media(prefers-reduced-motion: reduce) { .hero h1, .hero-row, .hero::before, .tw .ch, .skg-big { animation: none; } .tw .ch { opacity: 1; filter: none; transform: none; } .map { transition: none; } * { transition-duration: .01ms !important; } }
-  </style>
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background-color .3s,border-color .3s}
+header.s{background:rgba(43,29,21,.97);border-color:var(--line)}
+.bar{height:var(--h);display:flex;align-items:center;justify-content:space-between}
+.logo{font:300 1.5rem/1 var(--serif);position:relative;z-index:60}
+.logo .skg{display:block;font:400 .72rem/1 var(--sans);letter-spacing:.28em;color:var(--br);margin-top:.28rem;text-transform:uppercase}
+nav ul{display:flex;gap:2rem;list-style:none;align-items:center}
+nav a{font-size:.92rem;color:var(--mute);transition:color .2s}
+nav a:hover{color:var(--ink)}
+nav .btn{color:var(--wd);padding:.6rem 1.25rem}
+nav .btn:hover{color:var(--wd)}
+.burger{display:none;width:44px;height:44px;position:relative;z-index:60}
+.burger span{position:absolute;left:11px;right:11px;height:1px;background:var(--ink);transition:transform .35s,top .35s}
+.burger span:first-child{top:18px}.burger span:last-child{top:25px}
+.open .burger span:first-child{top:21px;transform:rotate(45deg)}
+.open .burger span:last-child{top:21px;transform:rotate(-45deg)}
+
+/* HERO (χωρίς parallax, χωρίς kenburns - μόνο ελαφρύ fade) */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:var(--top);background:var(--wd) center/cover no-repeat;background-image:linear-gradient(180deg,rgba(43,29,21,.55) 0%,rgba(43,29,21,.45) 40%,#2b1d15 100%),url('hero.jpg')}
+.hero h1{font-weight:300;font-size:clamp(3.6rem,18vw,15rem);letter-spacing:-.035em;line-height:.95;margin-left:-.04em}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:clamp(1.2rem,3vw,2rem)}
+.hero p{max-width:30rem;color:#d6c8b2;font-size:1.05rem}
+.acts{display:flex;gap:.8rem;flex-wrap:wrap}
+.skg-big{display:block;font:400 clamp(.9rem,1.6vw,1.4rem)/1 var(--sans);letter-spacing:.4em;color:var(--br);margin-top:.5rem;margin-left:.05em;text-transform:uppercase}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);margin-top:clamp(2.5rem,7vh,4.5rem)}
+.facts div{padding:1.3rem 0;color:var(--mute);font-size:.9rem}
+.facts div+div{padding-left:1.5rem;border-left:1px solid var(--line)}
+.facts b{display:block;font:400 1.3rem/1.3 var(--serif);color:var(--ink)}
+
+/* ABOUT / EVENTS */
+.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(2rem,7vw,6rem);align-items:start}
+.about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
+.about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
+#events{background:var(--wd2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* DAM */
+.dam{position:relative;isolation:isolate;overflow:hidden;background:var(--wd2) center/cover no-repeat;border-top:1px solid var(--line);background-image:linear-gradient(180deg,rgba(43,29,21,.55) 0%,rgba(43,29,21,.35) 50%,rgba(43,29,21,.7) 100%),url('hero5.jpg')}
+.dam-inner{max-width:52rem;position:relative;z-index:1}
+.dam h2{font-size:clamp(2.4rem,5.2vw,4.2rem);font-weight:300;margin-bottom:clamp(1.5rem,4vw,2.2rem)}
+.dam p{color:#e8dcc7;margin-bottom:1.3rem;max-width:44rem}
+
+/* MENU */
+#menu{background:var(--st);color:var(--si)}
+.mh{display:flex;justify-content:space-between;align-items:center;gap:1.5rem 3rem;flex-wrap:wrap;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.mh h2{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;letter-spacing:-.02em}
+.mh>div{text-align:center}
+.mh p{max-width:22rem;color:var(--sm);font-size:.92rem;margin-bottom:.9rem;margin-left:auto;margin-right:auto}
+.nt{font-size:.92rem;color:var(--sm)}
+.nt a{color:var(--si);border-bottom:1px solid var(--si)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.6vw,1.1rem);margin-top:clamp(2rem,5vw,3rem)}
+.gal figure{position:relative;overflow:hidden;border-radius:12px;background:#3a291d}
+.gal figure:first-child{grid-column:1/-1;aspect-ratio:21/9}
+.gal figure:not(:first-child){aspect-ratio:1/1}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* E-SHOP */
+.eshop-head{margin-top:clamp(3rem,7vw,5rem)}
+.eshop-head h3{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:300;color:var(--si);margin-bottom:.6rem}
+.eshop-head p{color:var(--sm);max-width:42rem;margin-bottom:2rem}
+.eshop-layout{display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+.card{background:#fff;border:1px solid rgba(43,29,21,.08);border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(43,29,21,.06)}
+.card h4{font-family:var(--serif);font-size:1.25rem;color:var(--si);margin-bottom:.35rem}
+.card .desc{font-size:.88rem;color:var(--sm);margin-bottom:.8rem}
+.card .price{font-size:1.15rem;font-weight:600;color:var(--si);margin-bottom:.8rem}
+.extras{list-style:none;margin-bottom:1rem;border-top:1px dashed rgba(43,29,21,.1);padding-top:.6rem}
+.extras li{display:flex;align-items:center;justify-content:space-between;padding:.3rem 0;font-size:.88rem;color:var(--sm)}
+.extras label{display:flex;align-items:center;gap:.5rem;cursor:pointer}
+.extras input{width:17px;height:17px;accent-color:#cf9a5c;cursor:pointer}
+.extras .ep{color:var(--si);font-weight:500}
+.card .add{margin-top:auto;padding:.7rem 1rem;font-size:.88rem}
+
+/* CART */
+.cart{background:#fff;border:1px solid rgba(43,29,21,.08);border-radius:14px;padding:1.25rem;box-shadow:0 4px 14px rgba(43,29,21,.06);position:sticky;top:calc(var(--h) + 1.2rem)}
+.cart h4{font-family:var(--serif);font-size:1.4rem;color:var(--si);border-bottom:1px solid rgba(43,29,21,.1);padding-bottom:.7rem;margin-bottom:.8rem}
+.cart-items{list-style:none;max-height:340px;overflow-y:auto;margin-bottom:.8rem}
+.cart-empty{color:#8a7a6a;font-size:.9rem;text-align:center;padding:1.2rem 0}
+.cart-item{display:flex;justify-content:space-between;gap:.6rem;padding:.6rem 0;border-bottom:1px solid rgba(43,29,21,.06);font-size:.88rem;color:var(--sm)}
+.cart-item .nm{font-weight:500;color:var(--si)}
+.cart-item .ex{font-size:.78rem;color:#7a6a5a;margin-top:.1rem}
+.cart-item .pr{font-weight:500;color:var(--si);margin-top:.15rem}
+.qty{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+.qty button{width:26px;height:26px;border-radius:50%;background:rgba(43,29,21,.07);color:var(--si);font-weight:600;line-height:1}
+.qty button:hover{background:rgba(43,29,21,.15)}
+.qty span{min-width:18px;text-align:center;font-weight:600;color:var(--si)}
+.cart-total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:600;color:var(--si);border-top:2px solid rgba(43,29,21,.1);padding-top:.7rem;margin-top:.4rem}
+.cart-actions{display:flex;flex-direction:column;gap:.5rem;margin-top:.9rem}
+.cart-actions .btn{width:100%;padding:.75rem;font-size:.88rem}
+.btn-viva{background:#cf9a5c;color:#2b1d15;border-color:#cf9a5c;font-weight:600}
+.btn-viva:hover{background:#b8864a;border-color:#b8864a}
+.btn-clr{background:transparent;color:var(--sm);border:1px solid rgba(43,29,21,.15)}
+.btn-clr:hover{border-color:var(--si);color:var(--si)}
+
+/* REVIEWS / INFO */
+.rev h2,#info h2{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:300;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:2.5rem}
+.rg figure{border-top:1px solid var(--line);padding-top:1.5rem}
+.rg blockquote{font:italic 300 1.35rem/1.5 var(--serif);margin-bottom:1.2rem}
+.rg figcaption{font-size:.85rem;color:var(--mute)}
+.rg figcaption b{color:var(--ink);font-weight:500;margin-right:.6rem}
+.more{margin-top:3rem}
+#info{background:var(--wd2);border-top:1px solid var(--line)}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem)}
+.dl div{padding:1.3rem 0;border-top:1px solid var(--line)}
+.dl dt{font-size:.85rem;color:var(--br);margin-bottom:.2rem}
+.dl dd{font:300 1.35rem/1.4 var(--serif)}
+.map{width:100%;height:100%;min-height:360px;border:0;background:#3a291d}
+footer{padding:4rem 0 calc(3rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);text-align:center}
+footer .logo{font-size:2.2rem;display:block;margin-bottom:1.5rem}
+footer .logo .skg{font-size:.85rem;letter-spacing:.35em;margin-top:.35rem}
+footer ul{display:flex;justify-content:center;gap:1.8rem;list-style:none;flex-wrap:wrap;font-size:.9rem;color:var(--mute)}
+footer ul a:hover{color:var(--ink)}
+footer small{display:block;margin-top:2.5rem;color:var(--mute);font-size:.8rem}
+
+@media(max-width:900px){.about,.ig{grid-template-columns:1fr}.eshop-layout{grid-template-columns:1fr}.cart{position:static}}
+@media(max-width:860px){
+  .burger{display:block}
+  nav ul{position:fixed;inset:0;background:var(--wd);flex-direction:column;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+  .open nav ul{opacity:1;visibility:visible}
+  nav a:not(.btn){font:300 2rem var(--serif);color:var(--ink)}
+}
+@media(max-width:640px){
+  .facts{grid-template-columns:1fr}
+  .facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .hero-row{flex-direction:column;align-items:flex-start}
+  .gal{grid-template-columns:1fr}
+  .gal figure:first-child{aspect-ratio:16/9}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
 </head>
 <body>
 <header id="hd">
   <div class="wrap bar">
     <a href="#" class="logo">Woodhouse<span class="skg">SKG</span></a>
-    <button class="burger" id="bg" aria-label="Μενού πλοήγησης" aria-expanded="false"><span></span><span></span></button>
+    <button class="burger" id="bg" aria-label="Μενού" aria-expanded="false"><span></span><span></span></button>
     <nav id="nv"><ul>
       <li><a href="#about">Σχετικά</a></li>
       <li><a href="#events">Events</a></li>
@@ -179,16 +177,15 @@
       <li><a href="#reviews">Αξιολογήσεις</a></li>
       <li><a href="#dam">Φράγμα Θέρμης</a></li>
       <li><a href="#info">Πληροφορίες</a></li>
-      <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener" class="btn">Παραγγελία στο efood</a></li>
+      <li><a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener" class="btn">efood</a></li>
     </ul></nav>
   </div>
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <h1><span class="tw" id="tw">Woodhouse</span><span class="skg-big">SKG</span></h1>
+      <h1>Woodhouse<span class="skg-big">SKG</span></h1>
       <div class="hero-row">
         <p>Δίπλα στο Φράγμα Θέρμης: χειροποίητες αλμυρές & γλυκές κρέπες, XL σάντουιτς και εκλεκτός καφές σε ένα ήρεμο, φυσικό περιβάλλον.</p>
         <div class="acts">
@@ -203,7 +200,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="sec" id="about">
     <div class="wrap about">
       <h2>Ποιότητα μέσα στην απλότητα.</h2>
@@ -214,7 +210,6 @@
     </div>
   </section>
 
-  <!-- EVENTS -->
   <section class="sec" id="events">
     <div class="wrap about">
       <h2>Events</h2>
@@ -226,185 +221,86 @@
     </div>
   </section>
 
-  <!-- MENU + E-SHOP -->
   <section class="sec" id="menu">
     <div class="wrap">
       <div class="mh">
         <h2>Μενού</h2>
-        <div style="text-align:center">
+        <div>
           <p>Για όλες τις επιλογές και τις τρέχουσες τιμές, δείτε και το μενού στο efood.</p>
           <a href="https://www.e-food.gr/delivery/thessaloniki/woodhouse-8749993" target="_blank" rel="noopener" class="btn d">Πλήρες μενού στο efood</a>
         </div>
       </div>
-      <p class="nt" style="max-width:34rem;margin:0 0 clamp(1.5rem,4vw,2.5rem)">Στο Woodhouse θα βρείτε χειροποίητες κρέπες — αλμυρές και γλυκές — φτιαγμένες πάντα τη στιγμή της παραγγελίας σας, XL sandwiches και club sandwiches, hot dogs, μερίδες και σαλάτες, καθώς και εκλεκτούς καφέδες (espresso, cappuccino, freddo, frappé, ελληνικό) και αναψυκτικά.</p>
+      <p class="nt" style="max-width:34rem;margin:0 0 clamp(1.5rem,4vw,2.5rem)">Στο Woodhouse θα βρείτε χειροποίητες κρέπες — αλμυρές και γλυκές — φτιαγμένες πάντα τη στιγμή της παραγγελίας σας, XL sandwiches και club sandwiches, hot dogs, μερίδες και σαλάτες, καθώς και εκλεκτούς καφέδες και αναψυκτικά.</p>
       <div class="gal">
-        <figure><img src="hero1.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
-        <figure><img src="hero2.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
-        <figure><img src="hero3.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
-        <figure><img src="hero4.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
+        <figure><img src="hero1.jpg" alt="Woodhouse" loading="lazy"></figure>
+        <figure><img src="hero2.jpg" alt="Woodhouse" loading="lazy"></figure>
+        <figure><img src="hero3.jpg" alt="Woodhouse" loading="lazy"></figure>
+        <figure><img src="hero4.jpg" alt="Woodhouse" loading="lazy"></figure>
       </div>
 
-      <!-- E-SHOP SECTION -->
-      <div id="eshop" style="margin-top: clamp(3rem, 8vw, 5rem);">
-        <h2 style="font-size: clamp(2.2rem, 4.6vw, 3.6rem); font-weight: 300; margin-bottom: 1rem; color: var(--si);">Παραγγείλτε Online</h2>
-        <p style="color: var(--sm); margin-bottom: 2rem; max-width: 40rem;">Επιλέξτε κρέπα, προσθέστε τα έξτρα υλικά σας και ολοκληρώστε την παραγγελία σας με πληρωμή μέσω Viva.</p>
+      <!-- E-SHOP -->
+      <div id="eshop" class="eshop-head">
+        <h3>Παραγγείλτε Online</h3>
+        <p>Επιλέξτε κρέπα, προσθέστε τα έξτρα υλικά σας και ολοκληρώστε την παραγγελία σας.</p>
 
         <div class="eshop-layout">
-          <!-- PRODUCTS -->
-          <div>
-            <div class="eshop-grid" id="productGrid">
-              <!-- ΚΡΕΠΑ 1 -->
-              <div class="product-card" data-id="crepe1" data-name="Κρέπα με πραλίνα" data-base="3.50">
-                <h3>Κρέπα με πραλίνα</h3>
-                <p class="desc">Φύλλο κρέπας, πραλίνα, τριμμένο μπισκότο</p>
-                <div class="price">3,50 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe1">Προσθήκη</button>
-                </div>
-              </div>
+          <div class="products" id="products">
 
-              <!-- ΚΡΕΠΑ 2 -->
-              <div class="product-card" data-id="crepe2" data-name="Κρέπα με σοκολάτα" data-base="3.50">
-                <h3>Κρέπα με σοκολάτα</h3>
-                <p class="desc">Φύλλο κρέπας, σοκολάτα, τριμμένο μπισκότο</p>
-                <div class="price">3,50 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe2">Προσθήκη</button>
-                </div>
-              </div>
-
-              <!-- ΚΡΕΠΑ 3 -->
-              <div class="product-card" data-id="crepe3" data-name="Κρέπα με μπανάνα & σοκολάτα" data-base="4.00">
-                <h3>Κρέπα μπανάνα & σοκολάτα</h3>
-                <p class="desc">Φύλλο κρέπας, σοκολάτα, φρέσκια μπανάνα</p>
-                <div class="price">4,00 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe3">Προσθήκη</button>
-                </div>
-              </div>
-
-              <!-- ΚΡΕΠΑ 4 -->
-              <div class="product-card" data-id="crepe4" data-name="Κρέπα με Nutella & φράουλες" data-base="4.50">
-                <h3>Κρέπα Nutella & φράουλες</h3>
-                <p class="desc">Φύλλο κρέπας, Nutella, φρέσκες φράουλες</p>
-                <div class="price">4,50 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe4">Προσθήκη</button>
-                </div>
-              </div>
-
-              <!-- ΚΡΕΠΑ 5 -->
-              <div class="product-card" data-id="crepe5" data-name="Κρέπα με κασέρι & ζαμπόν" data-base="4.50">
-                <h3>Κρέπα κασέρι & ζαμπόν</h3>
-                <p class="desc">Φύλλο κρέπας, κασέρι, ζαμπόν, σαλάτα</p>
-                <div class="price">4,50 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe5">Προσθήκη</button>
-                </div>
-              </div>
-
-              <!-- ΚΡΕΠΑ 6 -->
-              <div class="product-card" data-id="crepe6" data-name="Κρέπα με αυγό & κασέρι" data-base="4.50">
-                <h3>Κρέπα αυγό & κασέρι</h3>
-                <p class="desc">Φύλλο κρέπας, αυγό, κασέρι, σαλάτα</p>
-                <div class="price">4,50 €</div>
-                <div class="extras-list">
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="extra-price">+0,30 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="extra-price">+0,50 €</span></div>
-                  <div class="extra-row"><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="extra-price">+0,50 €</span></div>
-                </div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="crepe6">Προσθήκη</button>
-                </div>
-              </div>
-
-              <!-- ΑΝΑΨΥΚΤΙΚΑ -->
-              <div class="product-card" data-id="drink1" data-name="Coca Cola" data-base="1.80">
-                <h3>Coca Cola</h3>
-                <p class="desc">330ml</p>
-                <div class="price">1,80 €</div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="drink1">Προσθήκη</button>
-                </div>
-              </div>
-
-              <div class="product-card" data-id="drink2" data-name="Coca Cola Zero" data-base="1.80">
-                <h3>Coca Cola Zero</h3>
-                <p class="desc">330ml</p>
-                <div class="price">1,80 €</div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="drink2">Προσθήκη</button>
-                </div>
-              </div>
-
-              <div class="product-card" data-id="drink3" data-name="Ice Tea Lemon" data-base="2.10">
-                <h3>Ice Tea Lemon</h3>
-                <p class="desc">330ml</p>
-                <div class="price">2,10 €</div>
-                <div class="card-actions">
-                  <button class="btn add-to-cart" data-id="drink3">Προσθήκη</button>
-                </div>
-              </div>
+            <div class="card" data-id="crepe" data-name="Κρέπα" data-base="1.50">
+              <h4>Κρέπα</h4>
+              <p class="desc">Φύλλο κρέπας. Διαλέξτε τα έξτρα υλικά σας.</p>
+              <div class="price">1,50 €</div>
+              <ul class="extras">
+                <li><label><input type="checkbox" class="extra" data-extra="Πραλίνα" data-price="0.50"> Πραλίνα</label><span class="ep">+0,50 €</span></li>
+                <li><label><input type="checkbox" class="extra" data-extra="Τριμμένο μπισκότο" data-price="0.30"> Τριμμένο μπισκότο</label><span class="ep">+0,30 €</span></li>
+                <li><label><input type="checkbox" class="extra" data-extra="Κασέρι" data-price="0.50"> Κασέρι</label><span class="ep">+0,50 €</span></li>
+                <li><label><input type="checkbox" class="extra" data-extra="Αυγό" data-price="0.50"> Αυγό</label><span class="ep">+0,50 €</span></li>
+                <li><label><input type="checkbox" class="extra" data-extra="Σαλάτα" data-price="0.50"> Σαλάτα</label><span class="ep">+0,50 €</span></li>
+              </ul>
+              <button class="btn add">Προσθήκη στο καλάθι</button>
             </div>
+
+            <div class="card" data-id="cocacola" data-name="Coca Cola" data-base="1.80">
+              <h4>Coca Cola</h4>
+              <p class="desc">330ml</p>
+              <div class="price">1,80 €</div>
+              <button class="btn add">Προσθήκη στο καλάθι</button>
+            </div>
+
+            <div class="card" data-id="cocacolazero" data-name="Coca Cola Zero" data-base="1.80">
+              <h4>Coca Cola Zero</h4>
+              <p class="desc">330ml</p>
+              <div class="price">1,80 €</div>
+              <button class="btn add">Προσθήκη στο καλάθι</button>
+            </div>
+
+            <div class="card" data-id="icetea" data-name="Ice Tea Lemon" data-base="2.10">
+              <h4>Ice Tea Lemon</h4>
+              <p class="desc">330ml</p>
+              <div class="price">2,10 €</div>
+              <button class="btn add">Προσθήκη στο καλάθι</button>
+            </div>
+
           </div>
 
-          <!-- CART PANEL -->
-          <div class="cart-panel" id="cartPanel">
-            <h3>Καλάθι</h3>
+          <aside class="cart">
+            <h4>Καλάθι</h4>
             <ul class="cart-items" id="cartItems">
-              <li class="empty-cart">Το καλάθι είναι άδειο</li>
+              <li class="cart-empty">Το καλάθι είναι άδειο</li>
             </ul>
             <div class="cart-total" id="cartTotal">Σύνολο: 0,00 €</div>
             <div class="cart-actions">
-              <button class="btn btn-checkout" id="checkoutBtn">Ολοκλήρωση Παραγγελίας</button>
-              <button class="btn btn-clear" id="clearCartBtn">Καθαρισμός Καλαθιού</button>
+              <a href="#viva-link" id="vivaBtn" class="btn btn-viva">Πληρωμή με Viva</a>
+              <button class="btn btn-clr" id="clearBtn">Καθαρισμός</button>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
       <!-- /E-SHOP -->
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="sec rev" id="reviews">
+  <section class="sec" id="reviews">
     <div class="wrap">
       <h2>Τι λένε οι πελάτες μας</h2>
       <div class="rg">
@@ -416,7 +312,6 @@
     </div>
   </section>
 
-  <!-- DAM -->
   <section class="sec dam" id="dam">
     <div class="wrap dam-inner">
       <h2>Φράγμα Θέρμης</h2>
@@ -426,7 +321,6 @@
     </div>
   </section>
 
-  <!-- INFO -->
   <section class="sec" id="info">
     <div class="wrap ig">
       <div>
@@ -458,189 +352,104 @@
 </footer>
 
 <script>
-  // HEADER + BURGER
-  const H = document.getElementById('hd'), bg = document.getElementById('bg'); let tk = false;
-  const onS = () => { H.classList.toggle('s', scrollY > 30); tk = false; };
-  addEventListener('scroll', () => { if (!tk) { tk = true; requestAnimationFrame(onS); } }, { passive: true }); onS();
-  const tog = o => { H.classList.toggle('open', o); bg.setAttribute('aria-expanded', o); document.body.style.overflow = o ? 'hidden' : ''; };
-  bg.addEventListener('click', () => tog(!H.classList.contains('open')));
-  document.querySelectorAll('#nv a').forEach(a => a.addEventListener('click', () => tog(false)));
+// Header scroll
+const H=document.getElementById('hd'),bg=document.getElementById('bg');
+let tk=false;
+const onS=()=>{H.classList.toggle('s',scrollY>30);tk=false};
+addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});
+onS();
+const tog=o=>{H.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+bg.addEventListener('click',()=>tog(!H.classList.contains('open')));
+document.querySelectorAll('#nv a').forEach(a=>a.addEventListener('click',()=>tog(false)));
 
-  // PARALLAX HERO
-  const hero = document.querySelector('.hero'); let pk = false;
-  const pOn = () => { if (hero) { const y = Math.min(scrollY, innerHeight); hero.style.setProperty('--p', (y * 0.25).toFixed(1) + 'px'); } pk = false; };
-  addEventListener('scroll', () => { if (!pk) { pk = true; requestAnimationFrame(pOn); } }, { passive: true }); pOn();
+// E-SHOP CART
+(function(){
+  const cart=[];
+  const list=document.getElementById('cartItems');
+  const totalEl=document.getElementById('cartTotal');
+  const vivaBtn=document.getElementById('vivaBtn');
+  const clearBtn=document.getElementById('clearBtn');
+  const products=document.getElementById('products');
 
-  // HERO TEXT ANIMATION
-  (function() {
-    const el = document.getElementById('tw');
-    if (!el) return;
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    const text = el.textContent;
-    el.textContent = '';
-    [...text].forEach((c, i) => {
-      const s = document.createElement('span');
-      s.className = 'ch';
-      s.textContent = c;
-      s.style.animationDelay = (i * 90) + 'ms';
-      el.appendChild(s);
-    });
-  })();
+  const fmt=n=>n.toFixed(2).replace('.',',')+' €';
 
-  // ============================================
-  // E-SHOP CART LOGIC
-  // ============================================
-  (function() {
-    const cart = [];
-    const cartItemsEl = document.getElementById('cartItems');
-    const cartTotalEl = document.getElementById('cartTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const clearCartBtn = document.getElementById('clearCartBtn');
-    const productGrid = document.getElementById('productGrid');
-
-    // Format price to Greek locale
-    function fmt(price) {
-      return price.toFixed(2).replace('.', ',') + ' €';
+  function render(){
+    if(cart.length===0){
+      list.innerHTML='<li class="cart-empty">Το καλάθι είναι άδειο</li>';
+      totalEl.textContent='Σύνολο: 0,00 €';
+      return;
     }
+    let html='', total=0;
+    cart.forEach((it,i)=>{
+      const line=(it.base+it.extrasPrice)*it.qty;
+      total+=line;
+      html+=`<li class="cart-item">
+        <div>
+          <div class="nm">${it.name}</div>
+          ${it.extras.length?`<div class="ex">+ ${it.extras.join(', ')}</div>`:''}
+          <div class="pr">${fmt(line)}</div>
+        </div>
+        <div class="qty">
+          <button data-i="${i}" data-a="dec">−</button>
+          <span>${it.qty}</span>
+          <button data-i="${i}" data-a="inc">+</button>
+        </div>
+      </li>`;
+    });
+    list.innerHTML=html;
+    totalEl.textContent='Σύνολο: '+fmt(total);
 
-    // Render cart
-    function renderCart() {
-      if (cart.length === 0) {
-        cartItemsEl.innerHTML = '<li class="empty-cart">Το καλάθι είναι άδειο</li>';
-        cartTotalEl.textContent = 'Σύνολο: 0,00 €';
-        return;
-      }
-      let html = '';
-      let total = 0;
-      cart.forEach((item, index) => {
-        const itemTotal = (item.basePrice + item.extrasPrice) * item.qty;
-        total += itemTotal;
-        html += `
-          <li class="cart-item">
-            <div class="cart-item-info">
-              <div class="item-name">${item.name}</div>
-              ${item.extras.length ? `<div class="item-extras">+ ${item.extras.join(', ')}</div>` : ''}
-              <div class="item-price">${fmt(itemTotal)}</div>
-            </div>
-            <div class="cart-item-actions">
-              <button class="qty-btn" data-index="${index}" data-action="dec">−</button>
-              <span class="qty">${item.qty}</span>
-              <button class="qty-btn" data-index="${index}" data-action="inc">+</button>
-            </div>
-          </li>
-        `;
+    list.querySelectorAll('button').forEach(b=>{
+      b.addEventListener('click',()=>{
+        const i=+b.dataset.i, a=b.dataset.a;
+        if(a==='inc') cart[i].qty++;
+        else{ cart[i].qty--; if(cart[i].qty<=0) cart.splice(i,1); }
+        render();
       });
-      cartItemsEl.innerHTML = html;
-      cartTotalEl.textContent = 'Σύνολο: ' + fmt(total);
+    });
+  }
 
-      // Attach qty listeners
-      document.querySelectorAll('.qty-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const idx = parseInt(this.dataset.index);
-          const action = this.dataset.action;
-          if (action === 'inc') {
-            cart[idx].qty += 1;
-          } else if (action === 'dec') {
-            cart[idx].qty -= 1;
-            if (cart[idx].qty <= 0) {
-              cart.splice(idx, 1);
-            }
-          }
-          renderCart();
-        });
-      });
-    }
+  products.addEventListener('click',e=>{
+    const btn=e.target.closest('.add');
+    if(!btn) return;
+    const card=btn.closest('.card');
+    const id=card.dataset.id;
+    const name=card.dataset.name;
+    const base=parseFloat(card.dataset.base);
 
-    // Add to cart
-    productGrid.addEventListener('click', function(e) {
-      const btn = e.target.closest('.add-to-cart');
-      if (!btn) return;
-      const card = btn.closest('.product-card');
-      const id = card.dataset.id;
-      const name = card.dataset.name;
-      const basePrice = parseFloat(card.dataset.base);
-
-      // Collect extras
-      const extras = [];
-      let extrasPrice = 0;
-      card.querySelectorAll('.extra:checked').forEach(cb => {
-        extras.push(cb.dataset.extra);
-        extrasPrice += parseFloat(cb.dataset.price);
-      });
-
-      // Check if identical item already in cart (same id and same extras)
-      const existingIndex = cart.findIndex(item =>
-        item.id === id &&
-        item.extras.length === extras.length &&
-        item.extras.every((e, i) => e === extras[i])
-      );
-
-      if (existingIndex > -1) {
-        cart[existingIndex].qty += 1;
-      } else {
-        cart.push({
-          id: id,
-          name: name,
-          basePrice: basePrice,
-          extras: extras,
-          extrasPrice: extrasPrice,
-          qty: 1
-        });
-      }
-
-      // Uncheck extras after adding
-      card.querySelectorAll('.extra').forEach(cb => cb.checked = false);
-
-      renderCart();
-
-      // Brief visual feedback
-      btn.textContent = '✓ Προστέθηκε';
-      setTimeout(() => { btn.textContent = 'Προσθήκη'; }, 800);
+    const extras=[];
+    let extrasPrice=0;
+    card.querySelectorAll('.extra:checked').forEach(cb=>{
+      extras.push(cb.dataset.extra);
+      extrasPrice+=parseFloat(cb.dataset.price);
     });
 
-    // Clear cart
-    clearCartBtn.addEventListener('click', function() {
-      if (cart.length === 0) return;
-      if (confirm('Να καθαριστεί το καλάθι;')) {
-        cart.length = 0;
-        renderCart();
-      }
-    });
+    const found=cart.findIndex(it=>it.id===id && it.extras.length===extras.length && it.extras.every((x,k)=>x===extras[k]));
+    if(found>-1) cart[found].qty++;
+    else cart.push({id,name,base,extras,extrasPrice,qty:1});
 
-    // Checkout -> Viva Payment link
-    checkoutBtn.addEventListener('click', function() {
-      if (cart.length === 0) {
-        alert('Το καλάθι σας είναι άδειο. Προσθέστε προϊόντα πρώτα.');
-        return;
-      }
+    card.querySelectorAll('.extra').forEach(cb=>cb.checked=false);
+    render();
 
-      let total = 0;
-      let orderLines = [];
-      cart.forEach(item => {
-        const itemTotal = (item.basePrice + item.extrasPrice) * item.qty;
-        total += itemTotal;
-        orderLines.push(`${item.qty}x ${item.name}${item.extras.length ? ' + ' + item.extras.join(', ') : ''} — ${fmt(itemTotal)}`);
-      });
+    btn.textContent='✓ Προστέθηκε';
+    setTimeout(()=>btn.textContent='Προσθήκη στο καλάθι',700);
+  });
 
-      const orderSummary = orderLines.join('\n');
-      const totalFormatted = fmt(total);
+  clearBtn.addEventListener('click',()=>{
+    if(cart.length===0) return;
+    if(confirm('Να καθαριστεί το καλάθι;')){ cart.length=0; render(); }
+  });
 
-      // Viva Payments redirect URL with amount and description
-      // Replace with your actual Viva payment link / smart checkout URL
-      const vivaBaseUrl = 'https://www.vivapayments.com/el-gr/checkout?amount=' + total.toFixed(2) + '&description=' + encodeURIComponent('Woodhouse SKG Παραγγελία');
+  // Viva link — όταν έχεις το URL, άλλαξε το href εδώ:
+  vivaBtn.addEventListener('click',e=>{
+    if(cart.length===0){ e.preventDefault(); alert('Το καλάθι είναι άδειο.'); return; }
+    // Όταν έχεις το Viva link, βάλε το στο href="#viva-link" -> πραγματικό URL
+    // Ή χρησιμοποίησε το παρακάτω για να ανοίξει δυναμικά:
+    // window.open('https://www.vivapayments.com/...', '_blank');
+  });
 
-      alert('Παραγγελία:\n' + orderSummary + '\n\nΣύνολο: ' + totalFormatted + '\n\nΜετάβαση στην πληρωμή Viva...');
-      window.open(vivaBaseUrl, '_blank');
-
-      // Optionally clear cart after checkout
-      // cart.length = 0;
-      // renderCart();
-    });
-
-    // Initial render
-    renderCart();
-  })();
+  render();
+})();
 </script>
 </body>
 </html>
