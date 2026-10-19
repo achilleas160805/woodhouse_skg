@@ -67,6 +67,10 @@ nav .btn:hover{color:var(--wd)}
 .about h2{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:300}
 .about p{color:#c9b9a1;margin-bottom:1.3rem;max-width:34rem}
 #events{background:var(--wd2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* Events Icon Art */
+.event-badge-art{display:inline-flex;align-items:center;margin-top:1.2rem;opacity:.9}
+.event-badge-art svg{width:130px;height:auto;display:block}
+
 /* Φράγμα Θέρμης */
 .dam{position:relative;isolation:isolate;overflow:hidden;background:var(--wd2);border-top:1px solid var(--line);contain:paint}
 .dam::before{content:"";position:absolute;inset:0;z-index:-2;background:url('hero5.jpg') center/cover no-repeat;transform:scale(1.02)}
@@ -133,7 +137,7 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 }
 
 /* ========================================================
-   ULTRA-SMOOTH ESHOP & CART OPTIMIZATIONS (60/120fps)
+   ULTRA-SMOOTH ESHOP & CART OPTIMIZATIONS
    ======================================================== */
 .shop-wrap{
   margin-top:clamp(3rem,6vw,4.5rem);
@@ -318,44 +322,36 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <div class="wrap about">
 <div>
   <h2>Events</h2>
-  <!-- Minimal Party & Drink SVG Illustration -->
-  <div style="margin-top:1.4rem;max-width:240px;opacity:.95">
-    <svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-      <!-- Confetti & Celebration Sparkles -->
-      <circle cx="28" cy="32" r="2.5" fill="#cf9a5c" />
-      <circle cx="85" cy="18" r="2" fill="#efe3d0" />
-      <circle cx="168" cy="24" r="2.5" fill="#cf9a5c" />
-      <circle cx="118" cy="38" r="1.8" fill="#e0cfb2" />
-      <path d="M72 32 L75 35 M75 32 L72 35" stroke="#cf9a5c" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M142 16 L145 19 M145 16 L142 19" stroke="#efe3d0" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M38 18 Q44 14 50 20" stroke="#cf9a5c" stroke-width="1.4" stroke-linecap="round"/>
-      <path d="M152 40 Q158 35 163 41" stroke="#e0cfb2" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Minimalist Aesthetic Party & Cocktail Line-Art -->
+  <div class="event-badge-art">
+    <svg viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Minimal Twinkles / Sparkles -->
+      <path d="M12 22 L14 16 L16 22 L22 24 L16 26 L14 32 L12 26 L6 24 Z" fill="#cf9a5c" opacity="0.85"/>
+      <path d="M126 14 L127.5 10 L129 14 L133 15.5 L129 17 L127.5 21 L126 17 L122 15.5 Z" fill="#efe3d0" opacity="0.9"/>
+      <circle cx="28" cy="12" r="1.5" fill="#efe3d0"/>
+      <circle cx="70" cy="8" r="1.5" fill="#cf9a5c"/>
+      <circle cx="112" cy="28" r="1.2" fill="#cf9a5c"/>
 
-      <!-- Party Hat -->
-      <g transform="translate(38, 25)">
-        <!-- Pom pom -->
-        <circle cx="22" cy="7" r="4" fill="#cf9a5c"/>
-        <!-- Hat cone -->
-        <path d="M22 10 L4 68 Q22 72 40 68 Z" stroke="#cf9a5c" stroke-width="2.2" stroke-linejoin="round" fill="rgba(207,154,92,0.08)"/>
-        <!-- Decorative stripes inside hat -->
-        <path d="M12 40 Q22 43 32 40" stroke="#efe3d0" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M7 54 Q22 58 37 54" stroke="#cf9a5c" stroke-width="1.8" stroke-linecap="round"/>
-        <!-- Confetti burst right next to hat -->
-        <circle cx="3" cy="30" r="1.5" fill="#efe3d0"/>
+      <!-- Sleek Party Hat (Fine Line Art) -->
+      <g stroke="#cf9a5c" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="48" cy="18" r="2.2" fill="#cf9a5c"/>
+        <path d="M48 20.2 L32 58 C42 61 54 61 64 58 Z" fill="rgba(207,154,92,0.06)"/>
+        <path d="M38 44 C44 46 52 46 58 44" stroke="#efe3d0" stroke-width="1.1"/>
+        <path d="M35 51 C43 53.5 53 53.5 61 51" stroke="#cf9a5c" stroke-width="1.1" stroke-dasharray="2 2"/>
       </g>
 
-      <!-- Cocktail Glass with Olive stick -->
-      <g transform="translate(108, 18)">
-        <!-- Drink liquid silhouette -->
-        <polygon points="12,28 32,28 22,46" fill="rgba(207,154,92,0.2)"/>
-        <!-- Glass rim & bowl -->
-        <path d="M6 18 L38 18 L22 50 Z" stroke="#efe3d0" stroke-width="2.2" stroke-linejoin="round"/>
-        <!-- Stem & Base -->
-        <line x1="22" y1="50" x2="22" y2="76" stroke="#efe3d0" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="10" y1="76" x2="34" y2="76" stroke="#efe3d0" stroke-width="2.2" stroke-linecap="round"/>
-        <!-- Cocktail stick & olive -->
-        <line x1="14" y1="8" x2="26" y2="34" stroke="#cf9a5c" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="20" cy="21" r="3.2" stroke="#cf9a5c" stroke-width="1.8" fill="#35251b"/>
+      <!-- Chic Coupe / Cocktail Glass (Clean Silhouette) -->
+      <g stroke="#efe3d0" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Saucer / Coupe Bowl -->
+        <path d="M78 26 C78 40 106 40 106 26 Z" fill="rgba(239,227,208,0.05)"/>
+        <!-- Liquid Level -->
+        <line x1="81" y1="31" x2="103" y2="31" stroke="#cf9a5c" stroke-width="1" opacity="0.85"/>
+        <!-- Thin Stem -->
+        <line x1="92" y1="40" x2="92" y2="58"/>
+        <!-- Elegant Flat Base -->
+        <line x1="82" y1="58" x2="102" y2="58"/>
+        <!-- Garnish / Twist -->
+        <path d="M85 24 Q90 19 96 23" stroke="#cf9a5c" stroke-width="1.2"/>
       </g>
     </svg>
   </div>
