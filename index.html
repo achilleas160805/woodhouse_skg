@@ -131,6 +131,60 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 .map{transition:none}
 *{transition-duration:.01ms!important}
 }
+
+/* ========================================================
+   ESHOP & CART STYLES (Added without altering existing styles)
+   ======================================================== */
+.shop-wrap{margin-top:clamp(3rem,6vw,4.5rem);padding-top:2.5rem;border-top:1px solid var(--sl)}
+.shop-head{margin-bottom:2rem}
+.shop-head h3{font-size:clamp(2rem,4vw,2.8rem);color:var(--si);margin-bottom:.5rem}
+.shop-head p{color:var(--sm);font-size:.95rem}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1.8rem}
+.shop-card{background:#ecdcc3;border-radius:16px;padding:1.6rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(43,29,21,.1);transition:transform .35s var(--ease),box-shadow .35s var(--ease);animation:cardIn .6s var(--ease) both}
+.shop-card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(43,29,21,.12)}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.sc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;gap:.8rem}
+.sc-title{font-family:var(--serif);font-size:1.4rem;color:var(--si);line-height:1.2}
+.sc-price{font-weight:600;font-size:1.15rem;color:var(--wd);background:rgba(207,154,92,.25);padding:.3rem .75rem;border-radius:99px;white-space:nowrap}
+.sc-desc{font-size:.88rem;color:var(--sm);margin-bottom:1.2rem}
+.sc-options{background:rgba(255,255,255,.35);padding:1rem;border-radius:12px;margin-bottom:1.2rem;display:flex;flex-direction:column;gap:.6rem}
+.sc-options span.opt-title{font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--sm);display:block;margin-bottom:.2rem}
+.sc-option{display:flex;align-items:center;justify-content:space-between;font-size:.88rem;cursor:pointer;user-select:none}
+.sc-option input{accent-color:var(--wd);width:16px;height:16px;cursor:pointer}
+.add-btn{width:100%;background:var(--si);color:var(--st);border:1px solid var(--si);padding:.8rem;border-radius:99px;font-weight:500;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .25s var(--ease)}
+.add-btn:hover{background:transparent;color:var(--si);transform:scale(1.02)}
+.add-btn:active{transform:scale(.98)}
+
+/* Floating Cart Button */
+.cart-trigger{position:fixed;bottom:2rem;right:2rem;z-index:90;background:var(--si);color:var(--st);border-radius:99px;padding:.85rem 1.4rem;box-shadow:0 10px 25px rgba(0,0,0,.3);display:flex;align-items:center;gap:.75rem;font-weight:500;border:1px solid var(--br);transition:transform .3s var(--ease),background-color .3s;animation:bounceIn .8s var(--ease)}
+.cart-trigger:hover{transform:scale(1.05);background:var(--wd2)}
+.cart-badge{background:var(--br);color:var(--wd);width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:600}
+@keyframes bounceIn{0%{transform:scale(0);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+
+/* Slide-out Cart Drawer */
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(100vw,420px);background:var(--wd2);color:var(--ink);z-index:100;box-shadow:-10px 0 30px rgba(0,0,0,.5);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s var(--ease)}
+.cart-drawer.active{transform:translateX(0)}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);z-index:95;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.cart-overlay.active{opacity:1;visibility:visible}
+.cd-header{padding:1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.cd-header h4{font-size:1.4rem}
+.cd-close{font-size:1.8rem;color:var(--mute);line-height:1;transition:color .2s}
+.cd-close:hover{color:var(--ink)}
+.cd-items{padding:1.5rem;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:1.2rem}
+.cd-empty{color:var(--mute);text-align:center;margin:auto}
+.cd-item{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:1rem;display:flex;justify-content:space-between;align-items:center;animation:slideItem .3s var(--ease)}
+@keyframes slideItem{from{opacity:0;transform:translateX(15px)}to{opacity:1;transform:translateX(0)}}
+.cd-item-name{font-weight:500;font-size:.95rem;margin-bottom:.2rem}
+.cd-item-sub{font-size:.78rem;color:var(--mute);line-height:1.3}
+.cd-item-price{font-weight:600;font-size:.95rem;color:var(--br)}
+.cd-qty-btn{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s}
+.cd-qty-btn:hover{background:var(--br);color:var(--wd)}
+.cd-footer{padding:1.5rem;border-top:1px solid var(--line);background:rgba(43,29,21,.4)}
+.cd-total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:600;margin-bottom:1.2rem}
+.cd-checkout{width:100%;padding:1rem;border-radius:99px;background:var(--br);color:var(--wd);font-weight:600;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid var(--br);transition:all .3s var(--ease)}
+.cd-checkout:hover{background:var(--ink);border-color:var(--ink);color:var(--wd)}
+.toast{position:fixed;bottom:6.5rem;right:2rem;background:#1e140e;color:var(--ink);border:1px solid var(--br);padding:.7rem 1.2rem;border-radius:99px;font-size:.85rem;z-index:91;pointer-events:none;transform:translateY(20px);opacity:0;transition:all .3s var(--ease)}
+.toast.show{transform:translateY(0);opacity:1}
 </style>
 </head>
 <body>
@@ -205,6 +259,132 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 <figure><img src="hero3.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
 <figure><img src="hero4.jpg" alt="Woodhouse" loading="lazy" decoding="async"></figure>
 </div>
+
+<!-- ================= ESHOP SECTION INSIDE MENU ================= -->
+<div class="shop-wrap" id="eshop">
+  <div class="shop-head">
+    <h3>Online Παραγγελία</h3>
+    <p>Επιλέξτε κρέπες με τα υλικά της αρεσκείας σας και δροσερά αναψυκτικά απευθείας στο καλάθι.</p>
+  </div>
+
+  <div class="shop-grid">
+    <!-- Προϊόν 1: Φτιάξε τη δική σου Κρέπα -->
+    <div class="shop-card" id="crepe-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Φτιάξε τη δική σου Κρέπα</span>
+          <span class="sc-price" id="crepe-total-badge">1,50 €</span>
+        </div>
+        <p class="sc-desc">Χειροποίητο φρέσκο φύλλο κρέπας (βάση 1,50€). Διαλέξτε τα υλικά που προτιμάτε:</p>
+        
+        <div class="sc-options">
+          <span class="opt-title">Έξτρα Υλικά</span>
+          <label class="sc-option">
+            <span>Πραλίνα (+0,50€)</span>
+            <input type="checkbox" class="crepe-opt" data-name="Πραλίνα" data-price="0.50">
+          </label>
+          <label class="sc-option">
+            <span>Τριμμένο μπισκότο (+0,30€)</span>
+            <input type="checkbox" class="crepe-opt" data-name="Τριμμένο μπισκότο" data-price="0.30">
+          </label>
+          <label class="sc-option">
+            <span>Κασέρι (+0,50€)</span>
+            <input type="checkbox" class="crepe-opt" data-name="Κασέρι" data-price="0.50">
+          </label>
+          <label class="sc-option">
+            <span>Αυγό (+0,50€)</span>
+            <input type="checkbox" class="crepe-opt" data-name="Αυγό" data-price="0.50">
+          </label>
+          <label class="sc-option">
+            <span>Σαλάτα (+0,50€)</span>
+            <input type="checkbox" class="crepe-opt" data-name="Σαλάτα" data-price="0.50">
+          </label>
+        </div>
+      </div>
+      <button class="add-btn" id="add-crepe-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+
+    <!-- Προϊόν 2: Κλασική Γλυκιά -->
+    <div class="shop-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Κρέπα Σοκολάτα & Μπισκότο</span>
+          <span class="sc-price">2,30 €</span>
+        </div>
+        <p class="sc-desc">Φύλλο κρέπας με πλούσια στρώση πραλίνας και τραγανό τριμμένο μπισκότο.</p>
+      </div>
+      <button class="add-btn" onclick="addToCart('Κρέπα Σοκολάτα & Μπισκότο', 2.30, 'Πραλίνα, Μπισκότο')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+
+    <!-- Προϊόν 3: Κλασική Αλμυρή -->
+    <div class="shop-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Κρέπα Special Αλμυρή</span>
+          <span class="sc-price">3,00 €</span>
+        </div>
+        <p class="sc-desc">Φύλλο κρέπας με λιωμένο κασέρι, φρέσκο αυγό και δροσερή σαλάτα.</p>
+      </div>
+      <button class="add-btn" onclick="addToCart('Κρέπα Special Αλμυρή', 3.00, 'Κασέρι, Αυγό, Σαλάτα')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+
+    <!-- Προϊόν 4: Coca Cola 330ml -->
+    <div class="shop-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Coca-Cola 330ml</span>
+          <span class="sc-price">1,80 €</span>
+        </div>
+        <p class="sc-desc">Κλασική, δροσερή Coca-Cola σε κουτάκι 330ml.</p>
+      </div>
+      <button class="add-btn" onclick="addToCart('Coca-Cola 330ml', 1.80)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+
+    <!-- Προϊόν 5: Coca Cola Zero 330ml -->
+    <div class="shop-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Coca-Cola Zero 330ml</span>
+          <span class="sc-price">1,80 €</span>
+        </div>
+        <p class="sc-desc">Αυθεντική γεύση χωρίς ζάχαρη και θερμίδες 330ml.</p>
+      </div>
+      <button class="add-btn" onclick="addToCart('Coca-Cola Zero 330ml', 1.80)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+
+    <!-- Προϊόν 6: Ice Tea Lemon 330ml -->
+    <div class="shop-card">
+      <div>
+        <div class="sc-top">
+          <span class="sc-title">Ice Tea Lemon 330ml</span>
+          <span class="sc-price">2,10 €</span>
+        </div>
+        <p class="sc-desc">Αναζωογονητικό παγωμένο τσάι με φυσικό άρωμα λεμονιού 330ml.</p>
+      </div>
+      <button class="add-btn" onclick="addToCart('Ice Tea Lemon 330ml', 2.10)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ================= END ESHOP SECTION ================= -->
+
 </div>
 </section>
 
@@ -258,6 +438,38 @@ nav .btn{padding:.9rem 1.8rem;font-size:.95rem}
 </div>
 </footer>
 
+<!-- Floating Trigger Button -->
+<button class="cart-trigger" id="cart-toggle" aria-label="Άνοιγμα καλαθιού">
+  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <span>Καλάθι</span>
+  <span class="cart-badge" id="cart-count">0</span>
+</button>
+
+<!-- Slide-out Drawer & Overlay -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Καλάθι αγορών">
+  <div class="cd-header">
+    <h4>Η Παραγγελία σας</h4>
+    <button class="cd-close" id="cart-close" aria-label="Κλείσιμο">&times;</button>
+  </div>
+  <div class="cd-items" id="cart-items">
+    <div class="cd-empty">Το καλάθι σας είναι άδειο.</div>
+  </div>
+  <div class="cd-footer">
+    <div class="cd-total">
+      <span>Σύνολο:</span>
+      <span id="cart-total">0,00 €</span>
+    </div>
+    <!-- Εδώ τοποθετείτε το link της Viva πληρωμής σας -->
+    <a href="https://www.vivawallet.com" target="_blank" rel="noopener" class="cd-checkout" id="viva-checkout-btn">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Πληρωμή (Viva Wallet)
+    </a>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Προστέθηκε στο καλάθι!</div>
+
 <script>
 const H=document.getElementById('hd'),bg=document.getElementById('bg');let tk=false;
 const onS=()=>{H.classList.toggle('s',scrollY>30);tk=false};
@@ -287,6 +499,119 @@ addEventListener('scroll',()=>{if(!pk){pk=true;requestAnimationFrame(pOn)}},{pas
     el.appendChild(s);
   });
 })();
+
+/* ========================================================
+   ESHOP CART LOGIC (Added without altering existing script)
+   ======================================================== */
+let cart = [];
+const cartToggle = document.getElementById('cart-toggle');
+const cartDrawer = document.getElementById('cart-drawer');
+const cartOverlay = document.getElementById('cart-overlay');
+const cartClose = document.getElementById('cart-close');
+const cartItems = document.getElementById('cart-items');
+const cartCount = document.getElementById('cart-count');
+const cartTotal = document.getElementById('cart-total');
+const toast = document.getElementById('toast');
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function openCart() {
+  cartDrawer.classList.add('active');
+  cartOverlay.classList.add('active');
+}
+function closeCart() {
+  cartDrawer.classList.remove('active');
+  cartOverlay.classList.remove('active');
+}
+
+cartToggle.addEventListener('click', openCart);
+cartClose.addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
+
+function addToCart(title, price, details = '') {
+  const existing = cart.find(i => i.title === title && i.details === details);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ id: Date.now() + Math.random(), title, price, details, qty: 1 });
+  }
+  updateCart();
+  showToast('Προστέθηκε στο καλάθι!');
+}
+
+function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+  updateCart();
+}
+
+function updateCart() {
+  const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  
+  cartCount.textContent = totalCount;
+  cartTotal.textContent = totalPrice.toFixed(2).replace('.', ',') + ' €';
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<div class="cd-empty">Το καλάθι σας είναι άδειο.</div>';
+    return;
+  }
+
+  cartItems.innerHTML = cart.map((item, idx) => `
+    <div class="cd-item">
+      <div>
+        <div class="cd-item-name">${item.title}</div>
+        ${item.details ? `<div class="cd-item-sub">${item.details}</div>` : ''}
+        <div class="cd-item-price">${(item.price * item.qty).toFixed(2).replace('.', ',')} €</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <button class="cd-qty-btn" onclick="changeQty(${idx}, -1)" aria-label="Μείωση">-</button>
+        <span style="font-size:.9rem;min-width:18px;text-align:center">${item.qty}</span>
+        <button class="cd-qty-btn" onclick="changeQty(${idx}, 1)" aria-label="Αύξηση">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Δυναμικός υπολογισμός τιμής κρέπας
+const crepeOpts = document.querySelectorAll('.crepe-opt');
+const crepeBadge = document.getElementById('crepe-total-badge');
+const addCrepeBtn = document.getElementById('add-crepe-btn');
+
+function getCrepeCalc() {
+  let base = 1.50;
+  let selected = [];
+  crepeOpts.forEach(cb => {
+    if (cb.checked) {
+      base += parseFloat(cb.getAttribute('data-price'));
+      selected.push(cb.getAttribute('data-name'));
+    }
+  });
+  return { price: base, ingredients: selected };
+}
+
+crepeOpts.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const calc = getCrepeCalc();
+    crepeBadge.textContent = calc.price.toFixed(2).replace('.', ',') + ' €';
+  });
+});
+
+addCrepeBtn.addEventListener('click', () => {
+  const calc = getCrepeCalc();
+  const desc = calc.ingredients.length > 0 ? calc.ingredients.join(', ') : 'Σκέτο φύλλο';
+  addToCart('Προσαρμοσμένη Κρέπα', calc.price, desc);
+  
+  // Reset checkboxes
+  crepeOpts.forEach(cb => cb.checked = false);
+  crepeBadge.textContent = '1,50 €';
+});
 </script>
 </body>
 </html>
